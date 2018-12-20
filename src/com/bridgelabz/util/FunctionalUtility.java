@@ -1,8 +1,9 @@
 package com.bridgelabz.util;
 
+import java.util.Random;
 import java.util.Scanner;
 
-public class FunctionalUtility {
+public class FunctionalUtility<E> {
 	public void replaceString(String str)
 	{
 		Scanner scan=new Scanner(System.in);
@@ -17,35 +18,285 @@ public class FunctionalUtility {
 	}
 
 	
-	public void flipCoin()
+	public void flipCoin(int count)
 	{ 
-		int count=0;
-		double result;
-		double heads,tails;
-		int sum_tails=0;
-		int sum_heads=0;
+		int head=0;
+		int tail=0;
 		
-		Scanner scan=new Scanner(System.in);
-		int n=scan.nextLine();
+		int i= count;
+		
+		Random result=new Random();
+		while(count>0)
+		{
+			double r=result.nextInt();
+			
+			if(r<0.5)
+			{
+				tail++;
+			}
+			else
+			{
+				head++;
+			}
+		 count--;
+		 
+		}
+	System.out.println(head/i*100);
+	System.out.println(tail/i*100);
+	}
+
+		
+
+		
+		
+		
+	
+	
+public void power()
+{
+	int count=0;
+
+	Scanner scan=new Scanner(System.in);
+	int n =scan.nextInt();
+	if( n>=0 && n<31)
+	{
 		for(int i=0;i<n;i++)
 		{
-		result = Math.random();
-		if(result <0.5)
-		  {
-		   tails=result;
-		   sum_tails++;
-		   
-		  }
-		else
-		
-		heads = result;
-		sum_heads++;
-		
+		  System.out.println(Math.pow(2, count));
+		  count++;
 		}
-		double pHeads = sum_heads/n*100;
-		System.out.println("heads percentage"+pHeads);
-		double pTails = sum_tails/n*100;
-		System.out.println("tails percentage"+pTails);
 	}
+	else
+	{
+		System.out.println("out of range");
 	}
+}
+
+
+
+public void leapYear()
+{
+	Scanner S=new Scanner(System.in);
+	System.out.println("enter the year");
+	int year=S.nextInt();
+	{
+		
+	 if(String.valueOf(year).length()==4)
+	 {
+	
+	    if((year%400 == 0) && (year%4==0))
+	    {
+		System.out.println("year is leap year");
+	     }
+	
+	    else if(year%100==0)
+	    {
+		System.out.println("year is not leap year");
+		
+	    }
+	else
+	   {
+		System.out.println("year is not leap year");
+		
+	   }
+	 }
+	 else
+	    { 
+		 System.out.println("yesr is not of four digits");
+		 }
+	 }
+}	
+	
+
+public void harmonicN() 
+{
+	{
+	  double sum=0;
+	  Scanner S=new Scanner(System.in);
+	  System.out.println("Enter the value");
+	  int num=S.nextInt();
+		 
+		 
+	  
+	  for(int i=1;i<=num;i++)
+	  {
+		  sum=sum  + (float)1 / i; 
+		  
+	  }
+	  System.out.println("result:"+sum);
+		
+	  
+	}
+}
+
+
+public void primeNo()
+{
+	int n;
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Enter a number ::");
+    n = sc.nextInt();
+    
+    for(int i = 2; i< n; i++) {
+       while(n%i == 0) {
+          System.out.println(i+" ");
+          n = n/i;
+       }
+    }
+    if(n >2) 
+    {
+       System.out.println(n);
+	  
+    }
+}
+
+
+public void gambler()
+{
+	int win=0;
+	int loose=0;
+
+	Scanner S=new Scanner(System.in);
+	  System.out.println("Enter the goal");
+	  int goal=S.nextInt();
+	  System.out.println("Enter the stake");
+	  int stake=S.nextInt();
+	  System.out.println("Enter the number of times");
+	  int n=S.nextInt();
+
+	for(int i=1;i<=n;i++)
+		{
+		
+		int cash=stake;
+		while(cash>0 && cash< goal)
+		{
+			if (Math.random() < 0.5)
+			{
+                cash++;
+                
+			}
+			else
+			{
+				cash--;
+			}
+		}
+		if(cash==goal)
+		{
+			win++;
+		}
+		else
+			loose++;
+		}
+	System.out.println(100* win/n);
+	System.out.println(100* loose/n);
+	}
+
+
+public void couponNumber(int n)
+{
+	boolean[] a=new boolean[n];
+	int count=0;
+	int distinct=0;
+	while(distinct<n)
+	{
+		Random rand=new Random();
+		int content=rand.nextInt(n);
+		count++;
+		if(!a[content])
+		{
+			distinct++;
+			System.out.println(distinct);
+			a[content]=true;
+		}
+	}
+	
+	System.out.println("assigning is done for"+count);
+	
+				
+    }		
+
+			
+		
+	
+	
+	public void triplets(int[] arr,int n)
+	{
+		
+		
+		boolean flag= false;
+		
+		for(int i=0;i<n-2;i++)
+		{
+			for(int j=i+1;j<n-1;j++)
+			{
+				for(int k=j+1;k<n;k++)
+				{
+					if (arr[i]+arr[j]+arr[k] == 0) 
+						
+					{
+						
+					   
+						System.out.println("true");
+					    flag=true;
+					}
+					
+					
+					
+					
+						
+						
+					
+						
+				}
+			}
+		}
+	
+	
+	if(flag==false)
+	{
+		System.out.println("false");
+	}
+}
+
+
+public void distance(int x,int y)
+{
+	double result=Math.sqrt(x*x+y*y);
+	System.out.println("result is"+result);
+	
+}
+	
+
+
+public void displayArray(E[][] array){
+	for(int i=0;i<array.length;i++){
+		for(int j=0;j<array.length;j++)
+		{
+			System.out.println(array[i][j]);
+		}
+	}
+}
+}
+		
+		
+	
+
+
+
+
+
+
+
+
+
+    
+		
+
+	
+
+
+	
+	
+
+
 

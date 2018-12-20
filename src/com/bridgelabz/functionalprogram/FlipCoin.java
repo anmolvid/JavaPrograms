@@ -1,12 +1,16 @@
 package com.bridgelabz.functionalprogram;
+import java.util.Scanner;
+
 import com.bridgelabz.util.*;
 
 public class FlipCoin {
 	public static void main(String[]agrs){
-		int nflips = 10;
-		System.out.println("Enter the number of flips");
+		Scanner S=new Scanner(System.in);
+		System.out.println("enter number of flips");
+		int nflips=S.nextInt();
+		
 		FunctionalUtility fp=new FunctionalUtility();
-		fp.flipCoin(nflips);
+		fp.flipCoin(nflips );
 		
 		
 	}
