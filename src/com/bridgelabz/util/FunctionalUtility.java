@@ -276,10 +276,46 @@ public void displayArray(E[][] array){
 		}
 	}
 }
-}
-		
-		
+
 	
+public void quadratic()
+{
+	Scanner s=new Scanner(System.in);
+    
+    System.out.println("enter value of a");
+	
+	double a=s.nextDouble();
+    System.out.println("enter the value of b");
+    double b=s.nextDouble();
+    System.out.println("enter the value of c");
+    double c=s.nextDouble();
+	double res=b*b-4*a*c;
+	double root1 = (-b + Math.sqrt(res)/(2*a*b));
+	double root2 = (-b - Math.sqrt(res)/(2*a*b));
+	System.out.println("first root is" +root1);
+	System.out.println("second root is"+root2);
+}
+
+
+
+public void stopwatch()
+{
+	Scanner S=new Scanner(System.in);
+	
+	
+	System.out.println("enter 1 to start");
+	long strt=System.currentTimeMillis();
+	long start=S.nextLong();
+	
+	System.out.println("enter 2 to stop");
+	long stp=System.currentTimeMillis();
+	long stop=S.nextLong();
+	
+	long elapse=(strt-stp);
+	System.out.println("Elapse time is"+elapse);
+	
+}
+}
 
 
 
