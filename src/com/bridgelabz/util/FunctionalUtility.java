@@ -16,6 +16,7 @@ public class FunctionalUtility<E> {
 		else
 			System.out.println("cannot be replaced");
 	}
+	///Flip coin
 
 	
 	public void flipCoin(int count)
@@ -49,7 +50,7 @@ public class FunctionalUtility<E> {
 
 		
 		
-		
+///Power of 2		
 	
 	
 public void power()
@@ -72,7 +73,7 @@ public void power()
 	}
 }
 
-
+////Leap year
 
 public void leapYear()
 {
@@ -108,6 +109,8 @@ public void leapYear()
 }	
 	
 
+////Harmonic series
+
 public void harmonicN() 
 {
 	{
@@ -130,6 +133,8 @@ public void harmonicN()
 }
 
 
+
+///Prime factor
 public void primeNo()
 {
 	int n;
@@ -150,6 +155,8 @@ public void primeNo()
     }
 }
 
+
+////Gambler
 
 public void gambler()
 {
@@ -192,6 +199,9 @@ public void gambler()
 	}
 
 
+///Coupon Number
+
+
 public void couponNumber(int n)
 {
 	boolean[] a=new boolean[n];
@@ -217,7 +227,7 @@ public void couponNumber(int n)
 
 			
 		
-	
+///Sum of three integer is zero
 	
 	public void triplets(int[] arr,int n)
 	{
@@ -315,7 +325,18 @@ public void stopwatch()
 	System.out.println("Elapse time is"+elapse);
 	
 }
+
+
+///Windchill
+
+
+public void windchill(double t, double v)
+{
+  double w = 35.74 + 0.6215*t + (0.4275*t - 35.75) * Math.pow(v, 0.16);
+  System.out.println("The value of windchill "+w);
 }
+}
+
 
 
 
