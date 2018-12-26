@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import com.bridgelabz.util.AlgorithmUtility;
 
-public class BubbleSort {
+public class InsertionSort {
 	public static void main(String[] args)
     {
         Scanner sc=new Scanner(System.in);
@@ -18,7 +18,7 @@ public class BubbleSort {
             arr[i]=sc.next();
         }
        
-        AlgorithmUtility.bubbleSort(arr,n);
+        AlgorithmUtility.insertionSort(arr,n);
         System.out.println("Elements after sorting");
         for(int i=0;i<n;i++)
         {

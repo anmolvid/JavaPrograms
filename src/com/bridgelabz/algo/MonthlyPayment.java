@@ -1,5 +1,15 @@
 package com.bridgelabz.algo;
 import java.util.Scanner;
+/*******************************************************************************
+ *   Compilation:  javac -d bin MergeSort.java                                    *
+ *  Execution:    java -cp bin com.bridgelabz.algorithmprograms.MergeSort        *
+ *                                                                              *
+ *  Purpose: to calculate the monthly payment                                 *
+ *                                                                                *
+ *  @author  Anmol Vidyarthi                                               *
+ *  @version 1.0                                                                *
+ *  @since   24.12.2018                                                            *
+ *  **************************************************************************/
 
 import com.bridgelabz.util.AlgorithmUtility;
 
