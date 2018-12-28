@@ -1,49 +1,63 @@
+/******************************************************************************
+ *  Compilation:  javac -d bin UtilityClass.java
+ *  Execution:    java -cp bin com.bridgelabz.util.AlgorithmUtility n
+ *  
+ *  Purpose: determine the value by using different sorting methods
+ *
+ *  @author 
+ *  @version 1.0
+ *  @since   24-12-2018
+ *
+ ******************************************************************************/
 package com.bridgelabz.algo;
-import java.util.Scanner;
-/*******************************************************************************
- *   Compilation:  javac -d bin MergeSort.java                                    *
- *  Execution:    java -cp bin com.bridgelabz.algorithmprograms.MergeSort        *
- *                                                                              *
- *  Purpose: Check using Stopwatch the Elapsed Time for every method call                                   *
- *                                                                                *
- *  @author  Anmol Vidyarthi                                               *
- *  @version 1.0                                                                *
- *  @since   26.12.2018                                                            *
- *  **************************************************************************/
+
 
 import com.bridgelabz.util.AlgorithmUtility;
+import com.bridgelabz.util.FunctionalUtility;
 
-public class UtilityClass {
-	public static void main(String[] args) {
-		
-    Scanner sc=new Scanner(System.in);
-	System.out.println("enter your choice");
-	int choice=sc.nextInt();
-	System.out.println("enter the number of elements");
-	int n=sc.nextInt();
-	String arr[]=new String[n];
-    
-	for(int i=0;i<n;i++)
-	{
-		arr[i]=sc.next();
-	}
-	AlgorithmUtility au=new AlgorithmUtility();
-	switch(choice)
-	{
-	case 1: double startTime=System.currentTimeMillis();//to start timer
-	au.bubbleSort(arr,arr.length);//to call method
-	double stopTime=System.currentTimeMillis();//to stop the timer
-	double elapsedTime=(startTime-stopTime);//to calculate the elapsed time
-	System.out.println("elapsed time is "+elapsedTime);
-	break;
-	
-	
-	case 2:  startTime=System.currentTimeMillis();//to start timer
-	au.insertionSort(arr,arr.length);//to call method
-	stopTime=System.currentTimeMillis();//to stop the timer
-	 elapsedTime=(startTime-stopTime);//to calculate the elapsed time
-	 break;
-
-}
-	}
-}
+//public class UtilityClass {
+//
+//    public static void main(String[] args) {
+//        
+//        System.out.println("1.binary search of numbers 2. binary search of strings 3.insertion sort of numbers 4.insertion sort of strings 5.bubble sort of numbers 6. bubble sort of strings");
+//
+//        System.out.println("enter the choice");
+//        int choice=AlgorithmUtility.intValue();
+//        switch(choice)
+//        {
+//        case 1:System.out.println("enter the number of  elements");
+//        int n1=AlgorithmUtility.intValue();
+//        int array1[]=new int[n1];
+//        System.out.println("enter the value of  key");
+//        int key1=AlgorithmUtility.intValue();
+//        long a =FunctionalUtility.start();
+//        System.out.println("start time is "+(a/1000));
+//        System.out.println("enter the array elements");
+//        for(int i=0;i<n1;i++)
+//        {
+//            array1[i] =AlgorithmUtility.intValue();
+//        }
+//        
+//       long b=FunctionalUtility.stop();
+//        System.out.println("endtime is "+(b/1000));
+//        int x=AlgorithmUtility.binarySearch(n1, key1, array1);
+//        System.out.println(x);
+//        long c=FunctionalUtility.elapse();
+//        System.out.println("elapsed time is "+(c/1000));
+//        break;
+//        
+//        
+//        case 2:System.out.println("enter the number of  elements");
+//        int n2=AlgorithmUtility.intValue();
+//        String[] array2=new String[n2];
+//        System.out.println("enter the value of  key");
+//        String key2=AlgorithmUtility.StringValue();
+//        long d =FunctionalUtility.start();
+//        System.out.println("start time is "+(d/1000));
+//        System.out.println("enter the array elements");
+//        for(int i=0;i<n2;i++)
+//        {
+//            array2[i] =AlgorithmUtility.StringValue();
+//        }
+//        long e=FunctionalUtility.stop();
+//        System.out.println("endtime is "+(e/1000));

@@ -1,11 +1,6 @@
-package com.bridgelabz.algo;
-
-import java.util.Scanner;
-
-import com.bridgelabz.util.AlgorithmUtility;
 /*******************************************************************************
- *   Compilation:  javac -d bin MergeSort.java                                    *
- *  Execution:    java -cp bin com.bridgelabz.algorithmprograms.MergeSort        *
+ *   Compilation:  javac -d bin TempConversion.java                                    *
+ *  Execution:    java -cp bin com.bridgelabz.algorithmprograms.TempConversion        *
  *                                                                              *
  *  Purpose: to convert the temperature from Celsius to Fahrenheit or vise versa                               *
  *                                                                                *
@@ -14,12 +9,18 @@ import com.bridgelabz.util.AlgorithmUtility;
  *  @since   19.12.2018                                                            *
  *  **************************************************************************/
 
+package com.bridgelabz.algo;
+
+import java.util.Scanner;
+
+import com.bridgelabz.util.AlgorithmUtility;
+
 public class TempConversion {
 	
 		public static void main(String[]args) {
-		Scanner sc=new Scanner(System.in);
+		
 		System.out.println("Enter the temperature");
-		double t=sc.nextDouble();
+		double t=AlgorithmUtility.doubleValue();
 		AlgorithmUtility au=new AlgorithmUtility();
 		au.Temparature(t);
 }

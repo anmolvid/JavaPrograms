@@ -1,3 +1,15 @@
+/*******************************************************************************
+ *   Compilation:  javac -d bin MergeSort.java                                    *
+ *  Execution:    java -cp bin com.bridgelabz.algorithmprograms.MergeSort     *
+ *                                                                              *
+ *  Purpose: to do Merge Sort on list of string
+ *
+ *                                                                                *
+ *  @author  Anmol Vidyarthi                                               *
+ *  @version 1.0                                                                *
+ *  @since   26.12.2018                                                            *
+ *  **************************************************************************/
+
 package com.bridgelabz.algo;
 import java.util.Scanner;
 
@@ -16,12 +28,6 @@ import java.util.Scanner;
 	import com.bridgelabz.util.AlgorithmUtility;
 	public class MergeSort
 	{
-		
-		
-
-		
-		
-
 		    public static void main(String[] args)
 		    {
 		        Scanner sc=new Scanner(System.in);

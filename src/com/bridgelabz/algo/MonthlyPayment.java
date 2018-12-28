@@ -1,27 +1,28 @@
-package com.bridgelabz.algo;
-import java.util.Scanner;
 /*******************************************************************************
- *   Compilation:  javac -d bin MergeSort.java                                    *
- *  Execution:    java -cp bin com.bridgelabz.algorithmprograms.MergeSort        *
+ *   Compilation:  javac -d bin MonthlyPayment.java                                    *
+ *  Execution:    java -cp bin com.bridgelabz.algorithmprograms.MonthlyPayment     *
  *                                                                              *
- *  Purpose: to calculate the monthly payment                                 *
+ *  Purpose: to calculate monthlyPayment that reads in three command­line arguments P, Y, and R                              *
  *                                                                                *
  *  @author  Anmol Vidyarthi                                               *
  *  @version 1.0                                                                *
- *  @since   24.12.2018                                                            *
+ *  @since   26.12.2018                                                            *
  *  **************************************************************************/
+
+package com.bridgelabz.algo;
+
 
 import com.bridgelabz.util.AlgorithmUtility;
 
 public class MonthlyPayment {
 	public static void main(String[]args) {
-	Scanner sc=new Scanner(System.in);
+	
 	System.out.println("Enter the Principal");
-	double p=sc.nextDouble();
+	double p=AlgorithmUtility.doubleValue();
 	System.out.println("Enter the number of Year");
-	double y=sc.nextDouble();
+	double y=AlgorithmUtility.doubleValue();
 	System.out.println("Enter the Rate of Interest");
-	double r=sc.nextDouble();
+	double r=AlgorithmUtility.doubleValue();
 	AlgorithmUtility mp=new AlgorithmUtility();
 	mp.monthlyPay(p,y,r);	
 	

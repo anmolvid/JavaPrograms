@@ -1,6 +1,6 @@
 /*******************************************************************************
- *   Compilation:  javac -d bin MergeSort.java                                    *
- *  Execution:    java -cp bin com.bridgelabz.algorithmprograms.MergeSort        *
+ *   Compilation:  javac -d bin SquareRoot.java                                    *
+ *  Execution:    java -cp bin com.bridgelabz.algorithmprograms.SquareRoot        *
  *                                                                              *
  *  Purpose: to calculate the square root of non negative number                                *
  *                                                                                *

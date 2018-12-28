@@ -1,3 +1,15 @@
+/*******************************************************************************
+ *   Compilation:  javac -d bin InsertionSort.java                                    *
+ *  Execution:    java -cp bin com.bridgelabz.algorithmprograms.InsertionSort     *
+ *                                                                              *
+ *  Purpose: Reads in string from standard input and prints them in sorted order.
+Uses insertion sort.                              *
+ *                                                                                *
+ *  @author  Anmol Vidyarthi                                               *
+ *  @version 1.0                                                                *
+ *  @since   26.12.2018                                                            *
+ *  **************************************************************************/
+
 package com.bridgelabz.algo;
 
 import java.util.Scanner;

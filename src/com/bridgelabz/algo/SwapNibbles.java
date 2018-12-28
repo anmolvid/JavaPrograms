@@ -1,3 +1,17 @@
+/*******************************************************************************
+ *   Compilation:  javac -d bin SwapNibbles.java                                    *
+ *  Execution:    java -cp bin com.bridgelabz.algorithmprograms.SwapNibbles     *
+ *                                                                              *
+ *  Purpose: to read an integer as an Input, convert to Binary using toBinary function and perform the following functions.
+i. Swap nibbles and find the new number.
+ii. Find the resultant number is the number is a power of 2.                              *
+ *                                                                                *
+ *  @author  Anmol Vidyarthi                                               *
+ *  @version 1.0                                                                *
+ *  @since   26.12.2018                                                            *
+ *  **************************************************************************/
+
+
 package com.bridgelabz.algo;
 
 import com.bridgelabz.util.AlgorithmUtility;

@@ -8,6 +8,8 @@ public class VendingMachine {public static void main(String[] agrs) {
 	int num=AlgorithmUtility.intValue();
 	AlgorithmUtility au=new AlgorithmUtility();
 	au.vendingMachine(num,notes);
+	
+	System.out.println(notes+ "Notes: " );
 
 }
 }
