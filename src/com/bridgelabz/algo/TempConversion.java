@@ -21,7 +21,8 @@ public class TempConversion {
 		
 		System.out.println("Enter the temperature");
 		double t=AlgorithmUtility.doubleValue();
-		AlgorithmUtility au=new AlgorithmUtility();
-		au.Temparature(t);
+		double temp=AlgorithmUtility.temparature(t);
+		System.out.println(temp);
+		
 }
 }

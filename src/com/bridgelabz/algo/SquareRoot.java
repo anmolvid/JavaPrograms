@@ -21,8 +21,8 @@ public class SquareRoot {
 //	Scanner s=new Scanner(System.in);
 	System.out.println("Enter the number");
 	double num=AlgorithmUtility.doubleValue();
-	AlgorithmUtility au=new AlgorithmUtility();
-	au.squareRoot(num);
+	double n=AlgorithmUtility.squareRoot(num);
+	System.out.println("the square root of " + num + "is" + n);
 	
 //	s.close();
 

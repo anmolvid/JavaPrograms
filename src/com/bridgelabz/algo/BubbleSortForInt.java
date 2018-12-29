@@ -22,15 +22,22 @@ public class BubbleSortForInt {
 		int n=AlgorithmUtility.intValue();
 		int arr[]=new int[n];
 	    
-	     for(int i=0;i<n;i++)
+		System.out.println("Enter elements");
+	     for(int i=0;i<arr.length;i++)
 	    {
 		arr[i]=AlgorithmUtility.intValue();
-		System.out.println("numbers are");
+		
 	    } 
 		
 		
 	    //calling the method
-		AlgorithmUtility.bubbleSortInt(arr,n);
+	     
+	    int[] res=AlgorithmUtility.bubbleSortInt(arr,n);
+		System.out.println("The sorted order is:");
+		
+			for (int i = 0; i < n; i++) {
+					System.out.println(res[i]);
+				}
 	}
 	   
 	

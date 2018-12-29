@@ -28,9 +28,9 @@ public class Anagram {
 		
 		
 	boolean an=AlgorithmUtility.anagram(m,n);
-	if(an)
+	if(!an)
 	{
-		System.out.println("not an anagram");
+		System.out.println(" an anagram");
 		
 	}
 	else

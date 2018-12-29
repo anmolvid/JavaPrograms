@@ -4,10 +4,47 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class FunctionalUtility<E> {
-	public void replaceString(String str)
-	{
-		Scanner scan=new Scanner(System.in);
-		String uname=scan.nextLine();
+	
+	static Scanner sc = new Scanner(System.in);
+
+	public static int intValue() {
+		try {
+			return sc.nextInt();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	public static double doubleValue() {
+		try {
+			return sc.nextInt();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0.0;
+	}
+
+	public static String StringValue() {
+		try {
+			return sc.next();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
+	/**
+	 * @purpose:Replace <<UserName>> with the proper name
+	 * @param str 
+	 *
+	 * 
+	 */
+
+	public static void replaceString(String str) {
+		
+		String uname=FunctionalUtility.StringValue();
 		if(str.length()>=3)
 		{
 			str = str.replaceFirst("<<username>>", uname);
@@ -18,7 +55,13 @@ public class FunctionalUtility<E> {
 	}
 	///Flip coin
 
-	
+	/**
+	 * @purpose:to print the percentage of heads and tails
+	 * @param number of flips
+	 *
+	 * 
+	 */
+
 	public void flipCoin(int count)
 	{ 
 		int head=0;
@@ -142,17 +185,13 @@ public void primeNo()
     System.out.println("Enter a number ::");
     n = sc.nextInt();
     
-    for(int i = 2; i< n; i++) {
+    for(int i = 2; i<= n; i++) {
        while(n%i == 0) {
           System.out.println(i+" ");
           n = n/i;
        }
     }
-    if(n >2) 
-    {
-       System.out.println(n);
-	  
-    }
+
 }
 
 
@@ -282,9 +321,9 @@ public void displayArray(E[][] array){
 	for(int i=0;i<array.length;i++){
 		for(int j=0;j<array.length;j++)
 		{
-			System.out.println(array[i][j]);
+			System.out.print(array[i][j] +" ");
 		}
-	}
+	}System.out.println();
 }
 
 	

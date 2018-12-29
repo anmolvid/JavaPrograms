@@ -1,6 +1,12 @@
 package com.bridgelabz.util;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class AlgorithmUtility {
@@ -52,8 +58,8 @@ public class AlgorithmUtility {
 
 		} else {
 
-			Arrays.sort(char1);// method sorts the specified array of int into ascending numerical order
-			Arrays.sort(char2);
+			sort(char1);// method sorts the specified array of int into ascending numerical order
+			sort(char2);
 
 			for (int i = 0; i < n1; i++)
 
@@ -64,6 +70,26 @@ public class AlgorithmUtility {
 
 		return true;
 
+	}
+	
+	public static char[] sort(char[] ch)
+	{
+		char [] b=new char[ch.length];
+		for (int i=0;i<ch.length;i++)
+			
+		{
+			int count=0;
+			for(int j=0;j<ch.length;j++)
+			{
+				
+			if(ch[i]<ch[j])
+			{
+				count++;
+			}
+			b[count]=ch[i];
+		}
+		}
+		return b;
 	}
 
 	public void Prime() {
@@ -112,10 +138,10 @@ public class AlgorithmUtility {
 	 * @purpose: To convert temparature from Celsius to Fahrenheit
 	 * @param C given temparature as an input
 	 */
-	public void Temparature(double C) {
+	public static double temparature(double C) {
 		double F = ((C * 9 / 5) + 32);
-		System.out.println(F);
 
+     return F;
 	}
 
 ///Square root
@@ -125,7 +151,7 @@ public class AlgorithmUtility {
 	 * @param n nonnegative number
 	 */
 
-	public void squareRoot(double n) {
+	public static double squareRoot(double n) {
 		double t = n;
 		double epsilon = 1e-15;
 		if (n > 0) {
@@ -133,17 +159,17 @@ public class AlgorithmUtility {
 				t = ((n / t) + t) / 2;
 
 			}
+		}
+			return t;
 
 		}
-		System.out.println("the square root of " + n + "is" + t);
-//	else
-//	System.out.println("its a negative number");
-	}
+		
+	
 
 ///to binary
 	/**
-	 * @purpose: to compute the square root of a nonnegative number c
-	 * @param n nonnegative number
+	 * @purpose: to outputs the binary (base 2) representation of the decimal number typed as the input.
+	 * @param num input number
 	 */
 
 	public static int[] toBinary(int num) {
@@ -157,6 +183,11 @@ public class AlgorithmUtility {
 	}
 
 ///bubble sort for integer and strings
+	
+	/**
+	 * @purpose: Reads in string prints them in sorted order using Bubble Sort
+	 * @param f
+	 */
 
 	public static void bubbleSort(String array[], int f) {
 
@@ -172,29 +203,39 @@ public class AlgorithmUtility {
 	}
 
 //bubble sort for integer
+	
+	/**
+	 * @purpose: Reads in integer prints them in sorted order using Bubble Sort
+	 * @param n number of integer
+	 * @param a[] array of integer
+	 */
 
-	public static void bubbleSortInt(int[] a, int n) {
-		int i, j, temp = 0;
+	public static int[] bubbleSortInt(int[] array, int n) {
+		int i, j, temp;
 
 		for (i = 0; i < n; i++) {
 			for (j = i + 1; j < n; j++) {
-				if (a[i] > a[j]) {
+				if (array[i] > array[j]) {
 					// Swapping
-					temp = a[i];
-					a[i] = a[j];
-					a[j] = temp;
+					temp = array[i];
+					array[i] = array[j];
+					array[j] = temp;
 				}
 			}
 		}
-		System.out.println();
-		System.out.println("The sorted order is:");
-
-		for (i = 0; i < n; i++) {
-			System.out.println(a[i]);
-		}
+		return array;
 	}
-
+	
+	
+		
+	
+	
 //insertion sort for  string 
+	/**
+	 * @purpose: Reads in string prints them in sorted order using insertion Sort
+	 * @param n number of 
+	 * @param arr[] array of string
+	 */
 
 	public static void insertionSort(String arr[], int n) {
 		String temp = "";
@@ -210,6 +251,12 @@ public class AlgorithmUtility {
 	}
 
 //insertion for integer
+	/**
+	 * @purpose: Reads in integer prints them in sorted order using insertion Sort
+	 * @param n number of integer
+	 * @param arr[] array of integer
+	 * 
+	 */
 
 	public static void insertionSortInt(int arr[], int n) {
 
@@ -225,10 +272,47 @@ public class AlgorithmUtility {
 		}
 	}
 	
+	/**
+	* 
+	* @param elapsed_time the map that contains [key, pair] values that
+	* 		  represents algorithm and its elapsed time respectively.
+	* @return map that contains the sorted map of [key,pair] values that are sorted
+	* 			by values
+	*/
+	public static Map<String,Double> sortByValue(Map<String, Double> elapsed_time){
+		//Creating a list from the hashmap
+		List<Map.Entry<String, Double> > list = 
+	               new LinkedList<Map.Entry<String, Double> >(elapsed_time.entrySet()); 
+		 
+		//Sort the list 
+		Collections.sort(list, new Comparator<Map.Entry<String, Double>>() {
+
+			@Override
+			public int compare(Map.Entry<String, Double> o1, Map.Entry<String, Double> o2) {
+				return (o1.getValue()).compareTo(o2.getValue());
+			}
+		});
+		 
+		// put data from sorted list to hashmap  
+		Map<String, Double> temp = new LinkedHashMap<String, Double>(); 
+	        for (Map.Entry<String, Double> hmap : list) { 
+	            temp.put(hmap.getKey(), hmap.getValue()); 
+	        } 
+	        return temp;
+	}
+	
  //binary search
+	/**
+	 * @purpose: Reads in integer prints the key integer using binary search
+	 * @param n number of integer
+	 * @param arr[] array of integer
+	 * @param key key integer
+	 * 
+	 */
+
 	
 	public static void binarySearch(int n, int key, int [] arr) {
-	int c, first, last, middle;
+	int  first, last, middle;
       first  = 0;
        last   = n - 1;
        middle = (first + last)/2;
@@ -251,11 +335,17 @@ public class AlgorithmUtility {
 	
 	
 	
-	
-	
-
-
 //merge sort
+	/**
+	 * @purpose: Reads in integer print them in sorted order using merge sort
+	 * @param 
+	 * @param array[] array of string
+	 * @param key key integer
+	 * 
+	 */
+	
+	
+	
 	public static void mergeSort(String array[], int low, int high) {
 		int n = high - low;
 		if (n <= 1)
@@ -281,8 +371,18 @@ public class AlgorithmUtility {
 		}
 
 	}
+	
+	//Vending Machine
+	
+	/**
+	 * @purpose: to calculate the minimum number of Notes as well as the Notes to be returned by the Vending Machine 
+	 * @param money 
+	 * @param notes[]
+	 * 
+	 * 
+	 */
 
-	public static int vendingMachine(int money, int[] notes) {
+	public static void vendingMachine(int money, int[] notes) {
 		int rem;
 		int i = 0;
 		int total = 0;
@@ -296,56 +396,70 @@ public class AlgorithmUtility {
 					rem = money % notes[i];
 					money = rem;
 					total = total + calculateNotes;
-					return calculateNotes;
-					// System.out.println(notes[i]+ "Notes: " +calculateNotes);
+					
+					System.out.println(notes[i]+ "Notes: " +calculateNotes);
 				}
 			}
-			// return total;
-			// System.out.println("total number of notes "+total);
+			 
+			 System.out.println("total number of notes "+total);
 		}
-		return total;
+		//
 	}
 
+	
+	//Swap Nibbles
+	
 	public static int swapNibbles(int x) {
 		return ((x & 0x0F) << 4 | (x & 0xF0) >> 4);
 	}
 
 //Find a number
 
-	public static int findNumber(int lower, int upper, int middle, int count, String input1, int n) {
-		Scanner rc = new Scanner(System.in);
-		System.out.println("Is your number:" + middle);
-		System.out.println();
-		System.out.println("Enter your answer in 'yes' or 'high' or 'low'");
-		input1 = rc.nextLine();
-		do {
-			if (input1.equals("high")) {
-				lower = middle;
-				count++;
-			} else if (input1.equals("yes")) {
-				System.out.println("The number you thought was: " + middle);
-				int no = count + 1;
-				System.out.println("It takes " + no + " times to find your exact number");
-				break;
-			}
+	public  static void binarySearch(int lower,int upper,int middle,int count,String input,int n)
+    {
+        
+        System.out.println("Is your number:"+middle);
+        System.out.println();
+        System.out.println("Enter your answer in 'yes' or 'high' or 'low'");
+        input=AlgorithmUtility.StringValue();
+        
+        do
+        {
+            if (input.equals("high"))
+            {
+                lower= middle;
+                count++;
+            }
+            else if (input.equals("yes"))
+            {
+                System.out.println("The number you thought was: "+middle);
+                int no=count+1;
+                System.out.println("It takes "+no+" times to find your exact number" );
+                break;
+            }
+            else if(input.equals("low"))
+            {
+                upper=middle;
+                count++;
+            }
+            if(count<n)
+            {
+                middle=(lower+ upper+1)/2;
+                System.out.println("Is your number "+middle+":");
+                input=AlgorithmUtility.StringValue();
+            }
+        }
+        while(lower<=upper);
+        if (count>n)
+        {
+            System.out.println("Number not found");
+        }
+        else
+        {
+            System.exit(0);
+        }
 
-			else if (input1.equals("low")) {
-				upper = middle;
-				count++;
-			}
-			if (count < n) {
-				middle = (lower + upper + 1) / 2;
-				System.out.println("Is your number " + middle + ":");
-				input1 = rc.nextLine();
-			}
-		} while (lower <= upper);
-		if (count > n) {
-			System.out.println("Number not found");
-		} else {
-			System.exit(0);
-		}
-		return middle;
-	}
+}
 
 	public static int dayofweek(int m, int d, int y) {
 
@@ -429,17 +543,37 @@ public static boolean isPallindrome(int n) {
  * @param n2
  * @return
  */
-//public static boolean anagram(int n1, int n2) {
+public static boolean anagram(int n1, int n2) {
 	
-//    int[] n1count = count(n1);
-//    int[] n2count = count(n2);
-//    for (int i = 0; i < n2count.length; i++) {
-//        if (n1count[i] != n2count[i]) {
-//            return false;
-//        }
-//    }
-//    return true;
-//}
+   int[] n1count = count(n1);
+   int[] n2count = count(n2);
+    for (int i = 0; i < n2count.length; i++) {
+       if (n1count[i] != n2count[i]) {
+            return false;
+        }
+    }
+    return true;
+    
+}
+
+/**
+ * Function to count the value in given integer be place
+ *
+ * @param n the integer value to count
+ * @return the integer array for the count value
+ */
+public static int[] count(int n) {
+    int[] count = new int[10];
+    int temp = n;
+    while (temp != 0) {
+        int r = temp % 10;
+        count[r]++;
+        temp = temp / 10;
+    }
+    return count;
+}
+
+
 
 
 

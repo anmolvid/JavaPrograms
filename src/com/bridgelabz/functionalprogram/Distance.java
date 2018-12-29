@@ -1,3 +1,13 @@
+/*******************************************************************************
+ *   Compilation:  javac -d bin Distance.java                                    *
+ *  Execution:    java -cp bin com.bridgelabz.algorithmprograms.Distance    *
+ *                                                                              *
+ *  Purpose: to prints the Euclidean distance from the point (x, y) to the origin (0, 0).             *
+ *                                                                                *
+ *  @author  Anmol Vidyarthi                                               *
+ *  @version 1.0                                                                *
+ *  @since   .12.2018                                                            *
+ *  **************************************************************************/
 package com.bridgelabz.functionalprogram;
 
 import java.util.Scanner;
