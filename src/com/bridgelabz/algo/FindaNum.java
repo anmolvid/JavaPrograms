@@ -21,9 +21,10 @@ public class FindaNum {
 	public static void main(String[] args) {
 		
 	AlgorithmUtility a1= new AlgorithmUtility ();
-	
-	System.out.println("Enter any Number:");
-    int n=AlgorithmUtility.intValue();
+	String i=args[0];
+	int n=Integer.parseInt(i);
+//	System.out.println("Enter any Number:");
+//    int n=AlgorithmUtility.intValue();
     int range=(int)(Math.pow(2,n-1));                //range calculation for the number
     System.out.println("Take number between '0' to "+range);
     int count=0;

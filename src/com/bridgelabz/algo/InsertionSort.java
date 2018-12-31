@@ -30,11 +30,10 @@ public class InsertionSort {
             arr[i]=sc.next();
         }
        
-        AlgorithmUtility.insertionSort(arr,n);
-        System.out.println("Elements after sorting");
-        for(int i=0;i<n;i++)
-        {
-            System.out.println(arr[i]+"");
+
+        String sortedArray[] = AlgorithmUtility.insertionSort(arr, n); 
+        for(int i=0;i<sortedArray.length;i++){
+        System.out.println(sortedArray[i]);
         }
 
     }

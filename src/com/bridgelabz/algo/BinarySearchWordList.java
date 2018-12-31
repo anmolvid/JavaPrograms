@@ -9,7 +9,7 @@ import com.bridgelabz.util.AlgorithmUtility;
 public class BinarySearchWordList {
 	
 	 public static void main(String[] args) throws IOException {
-	     FileReader fr=new FileReader("F:\\file.csv");
+	     FileReader fr=new FileReader("/home/admin1/Documents");
 	     BufferedReader br=new BufferedReader(fr);
 	     String str="";
 	     String delimitor=",";

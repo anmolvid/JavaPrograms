@@ -19,8 +19,7 @@ import com.bridgelabz.util.AlgorithmUtility;
 
 public class SwapNibbles {
 
-    public static void main(String[] args) {
-        
+	public static void main(String[] args) {
         System.out.println("enter the Value of n");
         int x =AlgorithmUtility.intValue();
         int flag=0;
@@ -28,8 +27,9 @@ public class SwapNibbles {
         System.out.println(c);
        
        int[] d=AlgorithmUtility.toBinary(c);
-       for(int j=d.length;j>=0;j--)
+       for(int j=7;j>=0;j--)
        {
+           
            System.out.println(d[j]);
        }
     
@@ -50,8 +50,5 @@ public class SwapNibbles {
      
         
     }
-    
-    
-        
-    
-}
+
+     }

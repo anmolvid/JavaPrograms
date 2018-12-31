@@ -35,7 +35,7 @@ public static void main(String[] agrs){
                          fu.displayArray(array);
                          break;
          
-              case 2: Double[][] darray=new Double[50][50];
+              case 2: Double[][] darray=new Double[m][n];
                      for(int i=0;i<m;i++){
 	                    for(int j=0;j<n;j++){
 		                    darray[i][j]=s.nextDouble();
@@ -44,7 +44,7 @@ public static void main(String[] agrs){
                       fu.displayArray(darray);
                       break;
 
-                case 3: Boolean[][] barray=new Boolean[50][50];
+                case 3: Boolean[][] barray=new Boolean[m][n];
                          for(int i=0;i<m;i++){
 	                          for(int j=0;j<n;j++){
 		                         barray[i][j]=s.nextBoolean();

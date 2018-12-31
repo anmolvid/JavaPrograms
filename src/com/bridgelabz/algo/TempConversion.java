@@ -18,11 +18,32 @@ import com.bridgelabz.util.AlgorithmUtility;
 public class TempConversion {
 	
 		public static void main(String[]args) {
-		
-		System.out.println("Enter the temperature");
-		double t=AlgorithmUtility.doubleValue();
-		double temp=AlgorithmUtility.temparature(t);
-		System.out.println(temp);
-		
+			System.out.println("enter 1. for conversion from celcius to fahrenheit 2. for conversion from fahrenheit to celcius");
+			int choice=AlgorithmUtility.intValue();
+			
+			switch(choice) {
+			case 1:	System.out.println("Enter the temperature in celsius");
+			double tc=AlgorithmUtility.doubleValue();
+		    double t=AlgorithmUtility.temparatureF(tc);
+		    System.out.println(t);
+		    break;
+		    
+			case 2:System.out.println("Enter the temperature in fahrenheit");
+			double tf=AlgorithmUtility.doubleValue();
+			double tff=AlgorithmUtility.temparatureC(tf);
+			System.out.println(tff);
+			break;
+			
+//		System.out.println("Enter the temperature in celsius");
+//		double tc=AlgorithmUtility.doubleValue();
+//		double tempc=AlgorithmUtility.temparatureF(tc);
+//		System.out.println(tempc);
+//		System.out.println("Enter the temperature in fahrenheit");
+//		double tf=AlgorithmUtility.doubleValue();
+//		double tempf=AlgorithmUtility.temparatureF(tf);
+//		System.out.println(tempf);
+//		
 }
 }
+}
+

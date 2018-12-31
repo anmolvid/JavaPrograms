@@ -23,7 +23,7 @@ public class AlgorithmUtility {
 
 	public static double doubleValue() {
 		try {
-			return sc.nextInt();
+			return sc.nextDouble();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -92,7 +92,7 @@ public class AlgorithmUtility {
 		return b;
 	}
 
-	public void Prime() {
+	public static void Prime() {
 
 		for (int i = 1; i < 1000; i++) {
 
@@ -123,13 +123,12 @@ public class AlgorithmUtility {
 	 * 
 	 */
 	public void monthlyPay(double P, double R, double Y) {
-		double r = R / (12 * 100);
-		double n = 12 * Y;
+		double r=R/(12*100);
+        double n=12*Y;
 
-		double k = Math.pow((1 + r), -n);// function returns a number representing the given base raised to the power of
-											// the given exponent.
-		double payment = P * R / 1 + k;
-		System.out.println("Monthly payment is " + payment);
+        double c=Math.pow((1+r),-n);
+        double payment=((P*r)/1-c);
+        System.out.println(payment);
 	}
 
 ////TEMPERATURE Conversion
@@ -138,12 +137,22 @@ public class AlgorithmUtility {
 	 * @purpose: To convert temparature from Celsius to Fahrenheit
 	 * @param C given temparature as an input
 	 */
-	public static double temparature(double C) {
+	public static double temparatureF(double C) {
 		double F = ((C * 9 / 5) + 32);
 
      return F;
 	}
 
+	
+	/**
+	 * @purpose: To convert temparature from Celsius to Fahrenheit
+	 * @param C given temparature as an input
+	 */
+	public static double temparatureC(double F) {
+		double C = ((F - 32) * 5/9);
+
+     return C;
+	}
 ///Square root
 	
 	/**
@@ -237,18 +246,21 @@ public class AlgorithmUtility {
 	 * @param arr[] array of string
 	 */
 
-	public static void insertionSort(String arr[], int n) {
-		String temp = "";
-		for (int i = 0; i < n; i++) {
-			for (int j = i + 1; j < n; j++) {
-				if (arr[i].compareToIgnoreCase(arr[j]) > 0)
-					temp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = temp;
-			}
-		}
 
-	}
+	public static String[] insertionSort(String array[], int f){
+		String temp="";
+		for(int i=0;i<f;i++){
+		for(int j=i+1;j<f;j++){
+		if(array[i].compareToIgnoreCase(array[j])>0){
+		temp = array[i];
+		array[i]=array[j];
+		array[j]=temp;
+		}
+		}
+		}
+		return array;
+		}
+		
 
 //insertion for integer
 	/**
@@ -381,40 +393,75 @@ public class AlgorithmUtility {
 	 * 
 	 * 
 	 */
+	static int i=0;
+    static int total=0;
+    //static int money;
+    public static   int calculate(int money,int[]notes)
+    {
+        //Method to calculate the notes to be dispatched
+        int rem;
+        if(money==0)
+        {
+            return -1 ;
+        }
+        else
+        {
+            if(money>=notes[i])
+            {
+                int calNotes =money/notes[i];
+                rem = money%notes[i];
+                money =rem;
+                total += calNotes;
+                System.out.println(notes[i]+  "rs Notes are  " +calNotes );
+            }
+            i++;
+            return calculate(money, notes);//method recursion
+        }
+    }
 
-	public static void vendingMachine(int money, int[] notes) {
-		int rem;
-		int i = 0;
-		int total = 0;
-
-		if (money == 0) {
-			System.out.println("no output");
-		} else {
-			for (i = 0; i < notes.length; i++) {
-				if (money >= notes[i]) {
-					int calculateNotes = money / notes[i];
-					rem = money % notes[i];
-					money = rem;
-					total = total + calculateNotes;
-					
-					System.out.println(notes[i]+ "Notes: " +calculateNotes);
-				}
-			}
-			 
-			 System.out.println("total number of notes "+total);
-		}
-		//
-	}
+//	public static void vendingMachine(int money, int[] notes) {
+//		int rem;
+//		int i = 0;
+//		int total = 0;
+//
+//		if (money == 0) {
+//			System.out.println("no output");
+//		} else {
+//			for (i = 0; i < notes.length; i++) {
+//				if (money >= notes[i]) {
+//					int calculateNotes = money / notes[i];
+//					rem = money % notes[i];
+//					money = rem;
+//					total = total + calculateNotes;
+//					
+//					System.out.println(notes[i]+ "Notes: " +calculateNotes);
+//				}
+//			}
+//			 
+//			 System.out.println("total number of notes "+total);
+//		}
+//		//
+//	}
 
 	
 	//Swap Nibbles
+	/**
+	 * @purpose: read an integer as an Input, convert to Binary,Swap nibbles.the resultant number is the number is a power of 2
+	 * @param x input integer
+	 **/
 	
-	public static int swapNibbles(int x) {
-		return ((x & 0x0F) << 4 | (x & 0xF0) >> 4);
-	}
+	public static int swapNibbles(int x)
+    {
+        return ((x & 0x0F) << 4 | (x & 0xF0) >> 4);     
+
+    }
 
 //Find a number
-
+	/**
+	 * @purpose: guess a number using binary search
+	 * @param x input integer
+	 **/
+	
 	public  static void binarySearch(int lower,int upper,int middle,int count,String input,int n)
     {
         
@@ -622,4 +669,97 @@ public static String []  sort(String [] str)
     }
     return str;
 }
+
+
+/////
+//**
+//* static method is used to possible recursion we can do it for a string
+//* @param str string value
+//* @param initial first element
+//* @param last element
+//* @param array list
+//* @return array list
+//*/
+public static List<String> recursion(String str, int initial, int last,List<String> arr) {
+  
+   if (initial == last) {
+       arr.add(str);
+   } else {
+       for (int i = initial; i < last; i++) {
+           str = swap(str, initial, i);
+           recursion(str, (initial + 1), last,arr);
+//           str = swap(str, initial, i);
+       }
+   }
+   return arr;
 }
+
+/**
+* static method is used to swap the string alphabets
+* @param str string value
+* @param i index of string
+* @param j index of string
+* @return String
+*/
+public static String swap(String str, int i, int j) {
+   char temp;
+   char[] ch = str.toCharArray();
+   temp = ch[i];
+   ch[i] = ch[j];
+   ch[j] = temp;
+   return String.valueOf(ch);
+
+}
+
+/**
+* static method is used to possible iterations we can do it for a string
+* @param s is the string value
+* @return arr array of string
+*/
+public static List<String> iteration(String str) {
+   List<String> arr = new ArrayList<>();
+   arr.add(String.valueOf(str.charAt(0)));
+   for (int i = 1; i < str.length(); i++) {
+       for (int j = arr.size() - 1; j >= 0; j--) {
+           String s = arr.remove(j);
+           for (int k = 0; k <= s.length(); k++) {
+               arr.add(s.substring(0, k) + str.charAt(i) + s.substring(k));
+           }
+       }
+   }
+   return arr;
+}
+
+/**
+* static method is used to sort the array list
+* @param arr is arraylist
+* @return arraylist
+*/
+public static List<String> listSort(List<String> arr)
+{
+   Collections.sort(arr);
+   return arr;
+}
+
+/**
+* static method is used to compare 2 array list
+* @param arr1 array list1
+* @param arr2 array list2
+* @return integer value
+*/
+@SuppressWarnings("unused")
+public static int comparision(List<String> arr1,List<String> arr2)
+{
+   for(int i=0;i<arr1.size();i++)
+   {
+       if(arr1.get(i).compareTo(arr2.get(i))==0)
+       {
+           return 1;
+       }
+       else
+           return 0;
+   }
+   return 0;
+}
+}
+
