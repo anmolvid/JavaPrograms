@@ -198,18 +198,18 @@ public class AlgorithmUtility {
 	 * @param f
 	 */
 
-	public static void bubbleSort(String array[], int f) {
-
-		for (int i = 0; i < f; i++) {
-			for (int j = 1; j < f; j++) {
-				if (array[j - 1].compareToIgnoreCase(array[j]) > 0) {
-					String temp = array[j - 1];
-					array[j - 1] = array[j];
-					array[j] = temp;
-				}
-			}
-		}
-	}
+//	public static <T extends Comparable<T>> void bubbleSort(T  array[], int f) {
+//
+//		for (int i = 0; i < f; i++) {
+//			for (int j = 1; j < f; j++) {
+//				if (array[j - 1].compareTo(array[j]) > 0) {
+//					String temp = array[j - 1];
+//					array[j - 1] = array[j];
+//					array[j] = temp;
+//				}
+//			}
+//		}
+//	}
 
 //bubble sort for integer
 	
@@ -419,29 +419,6 @@ public class AlgorithmUtility {
         }
     }
 
-//	public static void vendingMachine(int money, int[] notes) {
-//		int rem;
-//		int i = 0;
-//		int total = 0;
-//
-//		if (money == 0) {
-//			System.out.println("no output");
-//		} else {
-//			for (i = 0; i < notes.length; i++) {
-//				if (money >= notes[i]) {
-//					int calculateNotes = money / notes[i];
-//					rem = money % notes[i];
-//					money = rem;
-//					total = total + calculateNotes;
-//					
-//					System.out.println(notes[i]+ "Notes: " +calculateNotes);
-//				}
-//			}
-//			 
-//			 System.out.println("total number of notes "+total);
-//		}
-//		//
-//	}
 
 	
 	//Swap Nibbles
@@ -518,112 +495,102 @@ public class AlgorithmUtility {
 	}
 
 
-
-/**
- * Function helping prime() to check if prime is pallindrome and print it
- */
-public static void primePallindrome() {
-    System.out.println();
-    boolean b;
-    for (int j = 2; j <= 1000; j++) {
-        b = true;
-        for (int i = 2; i < j / 2; i++) {
-            if (j % i == 0) {
-                b = false;
-                break;
-            }
-        }
-        if (b && isPallindrome(j))
-            System.out.print(j + " ");
-    }
-}
-
-/**
- * Function to check if no is anagram or not
- */
-public static void primeAnagrams() {
-    ArrayList<Integer> ar = new ArrayList<Integer>();
-    System.out.println();
-    boolean b;
-    for (int j = 2; j <= 1000; j++) {
-        b = true;
-        for (int i = 2; i < j / 2; i++) {
-            if (j % i == 0) {
-                b = false;
-                break;
-            }
-        }
-        if (b)
-            ar.add(j);
-    }
-    for (int i = 0; i < ar.size(); i++) {
-        for (int j = i + 1; j < ar.size(); j++) {
-//            if (anagram(ar.get(i), ar.get(j))) {
-                System.out.println(ar.get(i) + "  " + ar.get(j));
-            }
-        }
-    }
-//}
-/**
- * Function to find the is pallindrome or not
- *
- * @param n the integer which to check for pallindrome
- * @return true if its pallindrome or false if its not
- */
-public static boolean isPallindrome(int n) {
-    int temp = n;
-    int sum = 0;
-    while (temp != 0) {
-        int r = temp % 10;
-        sum = sum * 10 + r;
-        temp = temp / 10;
-    }
-    if (sum == n) {
-        return true;
-    }
-    return false;
-}
-/**
- * to check the values are anagrams or not
- *
- * @param n1
- * @param n2
- * @return
- */
-public static boolean anagram(int n1, int n2) {
+	///**
+	// * Function helping prime() to check if prime is pallindrome and print it
+	// */
 	
-   int[] n1count = count(n1);
-   int[] n2count = count(n2);
-    for (int i = 0; i < n2count.length; i++) {
-       if (n1count[i] != n2count[i]) {
-            return false;
-        }
-    }
-    return true;
-    
-}
+	 public static boolean Pallindrome(int n) {
+	        int temp = n;
+	        int sum = 0;
+	        while (temp != 0) {
+	            int r = temp % 10;
+	            sum = sum * 10 + r;
+	            temp = temp / 10;
+	        }
+	        if (sum == n) {
+	            return true;
+	        }
+	        return false;
+	    }
+	    /**
+	     * to check the values are anagrams or not
+	     *
+	     * @param n1 input number1
+	     * @param n2 input number2
+	     * @return
+	     */
+	    public static boolean anagram(int n1, int n2) {
+	        int[] n1count = count(n1);
+	        int[] n2count = count(n2);
+	        for (int i = 0; i < n2count.length; i++) {
+	            if (n1count[i] != n2count[i]) {
+	                return false;
+	            }
+	        }
+	        return true;
+	    }
+	    public static void primePallindrome() {
+	        System.out.println();
+	        boolean b;
+	        for (int j = 2; j <= 1000; j++) {
+	            b = true;
+	            for (int i = 2; i < j / 2; i++) {
+	                if (j % i == 0) {
+	                    b = false;
+	                    break;
+	                }
+	            }
+	            if (b && Pallindrome(j))
+	                System.out.print(j + " ");
+	        }
+	    }
 
-/**
- * Function to count the value in given integer be place
- *
- * @param n the integer value to count
- * @return the integer array for the count value
- */
-public static int[] count(int n) {
-    int[] count = new int[10];
-    int temp = n;
-    while (temp != 0) {
-        int r = temp % 10;
-        count[r]++;
-        temp = temp / 10;
-    }
-    return count;
-}
+	    /**
+	     * Function to check if no is anagram or not
+	     */
+	    public static void primeAnagrams() {
+	        ArrayList<Integer> ar = new ArrayList<Integer>();
+	        System.out.println();
+	        boolean b;
+	        for (int i = 2; i <= 1000; i++) {
+	            b = true;
+	            for (int j = 2; j < i / 2; j++) {
+	                if (i % j == 0) {
+	                    b = false;
+	                    break;
+	                }
+	            }
+	            if (b)
+	                ar.add(i);
+	        }
+	        for (int i = 0; i < ar.size(); i++) {
+	            for (int j = i + 1; j < ar.size(); j++) {
+	                if (anagram(ar.get(i), ar.get(j))) {
+	                    System.out.println(ar.get(i)+" "+ar.get(j));
+
+	                }
+	            }
+	        }
+	    }
 
 
 
-
-
+	    /**
+	     * Function to count the value in given integer be place
+	     *
+	     * @param n the integer value to count
+	     * @return the integer array for the count value
+	     */
+	    public static int[] count(int n) {
+	        int[] count = new int[10];
+	        int temp = n;
+	        while (temp != 0) {
+	            int r = temp % 10;
+	            count[r]++;
+	            temp = temp / 10;
+	        }
+	        return count;
+	    }
 
 
 
@@ -654,6 +621,7 @@ public static int binSearch(String [] str,String key)
  return -1;
 }
 
+
 public static String []  sort(String [] str)
 {
     int len=str.length;
@@ -668,98 +636,8 @@ public static String []  sort(String [] str)
         }
     }
     return str;
-}
-
-
-/////
-//**
-//* static method is used to possible recursion we can do it for a string
-//* @param str string value
-//* @param initial first element
-//* @param last element
-//* @param array list
-//* @return array list
-//*/
-public static List<String> recursion(String str, int initial, int last,List<String> arr) {
-  
-   if (initial == last) {
-       arr.add(str);
-   } else {
-       for (int i = initial; i < last; i++) {
-           str = swap(str, initial, i);
-           recursion(str, (initial + 1), last,arr);
-//           str = swap(str, initial, i);
-       }
-   }
-   return arr;
-}
-
-/**
-* static method is used to swap the string alphabets
-* @param str string value
-* @param i index of string
-* @param j index of string
-* @return String
-*/
-public static String swap(String str, int i, int j) {
-   char temp;
-   char[] ch = str.toCharArray();
-   temp = ch[i];
-   ch[i] = ch[j];
-   ch[j] = temp;
-   return String.valueOf(ch);
 
 }
-
-/**
-* static method is used to possible iterations we can do it for a string
-* @param s is the string value
-* @return arr array of string
-*/
-public static List<String> iteration(String str) {
-   List<String> arr = new ArrayList<>();
-   arr.add(String.valueOf(str.charAt(0)));
-   for (int i = 1; i < str.length(); i++) {
-       for (int j = arr.size() - 1; j >= 0; j--) {
-           String s = arr.remove(j);
-           for (int k = 0; k <= s.length(); k++) {
-               arr.add(s.substring(0, k) + str.charAt(i) + s.substring(k));
-           }
-       }
-   }
-   return arr;
 }
 
-/**
-* static method is used to sort the array list
-* @param arr is arraylist
-* @return arraylist
-*/
-public static List<String> listSort(List<String> arr)
-{
-   Collections.sort(arr);
-   return arr;
-}
-
-/**
-* static method is used to compare 2 array list
-* @param arr1 array list1
-* @param arr2 array list2
-* @return integer value
-*/
-@SuppressWarnings("unused")
-public static int comparision(List<String> arr1,List<String> arr2)
-{
-   for(int i=0;i<arr1.size();i++)
-   {
-       if(arr1.get(i).compareTo(arr2.get(i))==0)
-       {
-           return 1;
-       }
-       else
-           return 0;
-   }
-   return 0;
-}
-}
 

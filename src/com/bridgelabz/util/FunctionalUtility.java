@@ -1,5 +1,8 @@
 package com.bridgelabz.util;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -400,4 +403,98 @@ System.out.println("no of posibilities are :"+count);
 			player = 0;
 		}
 	}
+
+
+
+/////
+//**
+//* static method is used to possible recursion we can do it for a string
+//* @param str string value
+//* @param initial first element
+//* @param last element
+//* @param array list
+//* @return array list
+//*/
+public static List<String> recursion(String str, int initial, int last,List<String> arr) {
+
+if (initial == last) {
+   arr.add(str);
+} else {
+   for (int i = initial; i < last; i++) {
+       str = swap(str, initial, i);
+       recursion(str, (initial + 1), last,arr);
+//       str = swap(str, initial, i);
+   }
 }
+return arr;
+}
+
+/**
+* static method is used to swap the string alphabets
+* @param str string value
+* @param i index of string
+* @param j index of string
+* @return String
+*/
+public static String swap(String str, int i, int j) {
+char temp;
+char[] ch = str.toCharArray();
+temp = ch[i];
+ch[i] = ch[j];
+ch[j] = temp;
+return String.valueOf(ch);
+
+}
+
+/**
+* static method is used to possible iterations we can do it for a string
+* @param s is the string value
+* @return arr array of string
+*/
+public static List<String> iteration(String str) {
+List<String> arr = new ArrayList<>();
+arr.add(String.valueOf(str.charAt(0)));
+for (int i = 1; i < str.length(); i++) {
+   for (int j = arr.size() - 1; j >= 0; j--) {
+       String s = arr.remove(j);
+       for (int k = 0; k <= s.length(); k++) {
+           arr.add(s.substring(0, k) + str.charAt(i) + s.substring(k));
+       }
+   }
+}
+return arr;
+}
+
+/**
+* static method is used to sort the array list
+* @param arr is arraylist
+* @return arraylist
+*/
+public static List<String> listSort(List<String> arr)
+{
+Collections.sort(arr);
+return arr;
+}
+
+/**
+* static method is used to compare 2 array list
+* @param arr1 array list1
+* @param arr2 array list2
+* @return integer value
+*/
+@SuppressWarnings("unused")
+public static int comparision(List<String> arr1,List<String> arr2)
+{
+for(int i=0;i<arr1.size();i++)
+{
+   if(arr1.get(i).compareTo(arr2.get(i))==0)
+   {
+       return 1;
+   }
+   else
+       return 0;
+}
+return 0;
+}
+}
+
