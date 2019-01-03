@@ -3,33 +3,34 @@ package com.bridgelabz.datastructure;
 import java.io.IOException;
 
 import com.bridgelabz.util.DataStructureUtility;
+import com.bridgelabz.util.LinkedList;
 
 public class UnorderedLists {
 	 static String fName="/home/admin1/Documents/example.txt";
      public static void main(String[] args) throws IOException{
     
-         DataStructureUtility LinkedList=new DataStructureUtility();
-         LinkedList=DataStructureUtility.readFile(LinkedList);
-         DataStructureUtility.printList(LinkedList);
+         LinkedList Lists=new LinkedList();
+       Lists=LinkedList.readFile(Lists);
+        LinkedList.printList(Lists);
          while(true)
          {
              System.out.println("please select one option");
              System.out.println("1.Display list 2.to search element 3.Display modified File  ");
              int option=DataStructureUtility.intValue();
              switch(option) {
-             case 1:DataStructureUtility.printList(LinkedList);
+             case 1:LinkedList.printList(Lists);
              break;
              case 2:System.out.println("Enter the key element to be searched");
              String key=DataStructureUtility.StringValue();
-             int k=DataStructureUtility.delete(LinkedList, key);
+             int k=LinkedList.delete(Lists, key);
              System.out.println(k);
              if(k==0) {
-                 DataStructureUtility.insert(LinkedList, key);
+                 LinkedList.insert(Lists, key);
              }
-             String[] fileContent = DataStructureUtility.toStrinConv(LinkedList);
-             DataStructureUtility.usingFileWriter(LinkedList,fileContent,fName);
+             String[] fileContent = LinkedList.toStrinConv(Lists);
+             LinkedList.usingFileWriter(Lists,fileContent,fName);
              break;
-             case 3:    DataStructureUtility.dispFile(fName);
+             case 3:  LinkedList.dispFile(fName);
              break;
              default:System.out.println("Please enter an valid option");
              break;
