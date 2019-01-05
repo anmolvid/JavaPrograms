@@ -12,13 +12,11 @@ public class OrderedList {
     {
        LinkedList Lists=new LinkedList();
        Lists=LinkedList.readFile(Lists);
-       LinkedList.printList(Lists);
-       
-       
+       LinkedList.printList(Lists);      
         while(true)
         {
             System.out.println("please select one option");
-            System.out.println("1.Display list 2.to search element 3.Display modified File  ");
+            System.out.println("1.Display list 2.to search element 3.Display Sorted File  ");
             int option=DataStructureUtility.intValue();
             switch(option) {
             case 1:LinkedList.printList(Lists);
@@ -32,18 +30,11 @@ public class OrderedList {
                 LinkedList.insert(Lists, key1);
             }
             int[] fileContent = LinkedList.toIntConv(Lists);    
-            String[] fileContent1 = LinkedList.toStrinConv(Lists);
+           
             int[] arr=LinkedList.stringSort(fileContent);
-            String[] sarray=new String[arr.length];
-            //int[] arry = DataStructureUtility.toIntConv(LinkedList);
-            for(int i=0;i<arr.length;i++) {
-                if(arr[i]!=0) {
-                     sarray[i]=String.valueOf(arr[i]);
-                    i++;
-                }
-            }
-            LinkedList.usingFileWriter(Lists,sarray,sortFile);
-            //DataStructureUtility.writeIntFile(fName,arr);
+           String sortedstring[]= LinkedList.intTostring(arr);
+          LinkedList.usingFileWriter(Lists,sortedstring,sortFile);
+          
             break;}
             case 3:   LinkedList .dispFile(sortFile);
             break;

@@ -11,7 +11,7 @@ public static void main(String[] args) {
         
 //        int n=DataStructureUtility.readInteger();
         Queue q1=new Queue(100);
-        int money=100000;
+        int money=10000;
         int ch = 0;
         do
         {

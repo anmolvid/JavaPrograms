@@ -45,33 +45,26 @@ public class AlgorithmUtility {
 	 * @param str2 string to check anagram
 	 * @return returing true if both are anagram to each other else returning false
 	 */
-	public static boolean anagram(String str1, String str2) {
-		char[] char1 = str1.toLowerCase().toCharArray();// method converts this string into character array.
-		char[] char2 = str2.toLowerCase().toCharArray();// method converts this string into character array.
-
-		int n1 = char1.length;
-		int n2 = char2.length;
-
-		if (n1 != n2) {
-
-			return false;
-
-		} else {
-
-			sort(char1);// method sorts the specified array of int into ascending numerical order
-			sort(char2);
-
-			for (int i = 0; i < n1; i++)
-
-				if (char1[i] != char2[2])
-
-					return false;
-		}
-
-		return true;
-
-	}
+	public static boolean isAnagram(String word, String anagram) {
+        boolean isAnagram = false;
+        if (word != null && anagram != null && word.length() == anagram.length()) {
+            char[] arr = word.toCharArray();
+            StringBuilder temp = new StringBuilder(anagram);
+            //int wordLength = FunctionalUtility.readInteger();
+            for (char ch : arr) {
+                int index = temp.indexOf("" + ch);
+                if (index != -1) {
+                    temp.deleteCharAt(index);
+                }
+            }
+            isAnagram = temp.toString().isEmpty();
+        }
+        return isAnagram;
+    }
 	
+	
+	
+	//////////////////////
 	public static char[] sort(char[] ch)
 	{
 		char [] b=new char[ch.length];
@@ -91,6 +84,7 @@ public class AlgorithmUtility {
 		}
 		return b;
 	}
+	//////////////////////////////////////
 
 	public static int Prime(int i,int k) {
 

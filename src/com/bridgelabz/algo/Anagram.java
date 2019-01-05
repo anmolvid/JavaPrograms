@@ -27,7 +27,7 @@ public class Anagram {
 		String n=AlgorithmUtility.StringValue();
 		
 		
-	boolean an=AlgorithmUtility.anagram(m,n);
+	boolean an=AlgorithmUtility.isAnagram(m,n);
 	if(!an)
 	{
 		System.out.println(" an anagram");

@@ -87,12 +87,15 @@ public class LinkedList {
        Node currNode = list.head;       
        while(currNode != null)
        {
-           if(currNode.data!=null)           {
-               if((currNode.data).compareToIgnoreCase(key)==0) {                    currNode.data=null;   
+           if(currNode.data!=null)
+           {
+               if((currNode.data).compareToIgnoreCase(key)==0) {                  
+            	   currNode.data=null;   
                    System.out.println("entered "+key+" found and deleted");
                    flag=1;       
                }
-           }            currNode = currNode.next;
+               currNode = currNode.next;
+           }           
         }
 
         return flag;           
@@ -175,8 +178,10 @@ public static int[] toIntConv(LinkedList list)
             kz=Integer.parseInt(currNode.data);
             str[i]=kz;
             i++;
-            currNode = currNode.next;
-        }}
+            
+        }
+        currNode = currNode.next;
+        }
     return str;
 }
 
@@ -197,6 +202,17 @@ public static int[] stringSort(int[] myArray) {
     return myArray;
     
 
+}
+public static String[] intTostring(int[] abc) {
+    String strarray[]=new String[abc.length];
+    int l=0;
+    for(int i=0;i<abc.length;i++) {
+        if(abc[i]!=0) {
+        String str=String.valueOf(abc[i]);
+        strarray[l]=str;
+        l++;
+    }}
+    return strarray;
 }
 }
 

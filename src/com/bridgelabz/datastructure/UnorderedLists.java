@@ -6,7 +6,7 @@ import com.bridgelabz.util.DataStructureUtility;
 import com.bridgelabz.util.LinkedList;
 
 public class UnorderedLists {
-	 static String fName="/home/admin1/Documents/example.txt";
+	 static String fName="/home/admin1/Documents/sorted.txt";
      public static void main(String[] args) throws IOException{
     
          LinkedList Lists=new LinkedList();

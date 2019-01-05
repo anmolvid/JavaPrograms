@@ -38,10 +38,7 @@ public class DayofWeek {
 			}
 			int d0 = AlgorithmUtility.dayofweek(m,d,y);//to call method
 			String[] days = {"monday","tuesday","wednesday","thursday","friday","saturday","sunday"};
-			for(d0=0;d0<=days.length;d0++)
-			{
-				System.out.println("The day of the week is " +days);	
-			}
+			System.out.println("The day of the week is " +days[d0]);
 			}
 			
 	
