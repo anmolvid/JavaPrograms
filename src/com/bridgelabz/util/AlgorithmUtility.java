@@ -86,27 +86,49 @@ public class AlgorithmUtility {
 	}
 	//////////////////////////////////////
 
-	public static int Prime(int i,int k) {
+	 public static int prime(int range)
+	    {
 
-		for ( i = 1; i < k; i++) {
+	        for(int i=1; i <= range; i++){
 
-			int flag = 1;
+	            int flag = 1;
 
-			for (int j = 2; j < i; j++) {
+	            for(int j=2;j<i;j++){
 
-				if (i % j == 0) {
-					flag = 0;
-					break;
+	                if(i % j == 0){
+	                    flag = 0;
+	                    break;
 
-				}
-			}
-			if (flag == 1) {
-				return i;
-			}
+	                }
+	            }
+	            if(flag==1)
+	            {
+	               System.out.println(i);
+	            }
+	        }
+	        return i;
+	    }
 
-		}
-		return i;
-	}
+	
+	//////////////
+	public static List<Integer> findPrime(int low,int high) {
+        int flag = 1;
+        int i;
+        List<Integer> arr = new ArrayList<>();
+        for (i = low; i < high; i++) {
+            for (int j = 2; j < i; j++) {
+                if (i % j == 0) {
+                    flag = 0;
+                    break;
+                } else
+                    flag = 1;
+            }
+            if (flag == 1) {
+                arr.add(i);
+            }
+        }
+        return arr;
+    }
 ////MONTHLY PAYMENT
 
 	/**

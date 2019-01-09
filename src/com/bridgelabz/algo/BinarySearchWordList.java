@@ -48,39 +48,3 @@ public class BinarySearchWordList {
 	}
 	 
 		 
-//		 String csvFile = "/home/admin1/Documents/name.csv";
-//         
-//         BufferedReader fileReader = new BufferedReader(new FileReader(csvFile));
-//	     String str="";
-//	     String delimitor=",";
-//	     String[] array=new String[100];
-//	     while((str=br.readLine())!=null){
-//	         array=str.split(delimitor);
-//	     }
-//	     
-//	     //Method 1- using static function of AlgorithmUtility class of
-//	     //com.bridgelabz.util package
-//	     AlgorithmUtility.sort(array);
-//	     
-//	     for(int i=0;i<array.length;i++)
-//	     {
-//	         System.out.println(array[i]);
-//	     }
-//	     System.out.println("Enter the word to be searched from the file list");
-//	     String word=AlgorithmUtility.StringValue();
-//	     
-//	     //Method 2- using static function of AlgorithmUtility class of
-//	     //com.bridgelabz.util package
-//	     int i=AlgorithmUtility.binSearch(array, word);
-//	     
-//	     if(i>=0)
-//	         System.out.println("Word is found in the list at the index "+i);
-//	     else
-//	         System.out.println("Word is not found in the list");
-//	     
-//	     br.close();
-//	 }
-//	}
-//
-//
-//

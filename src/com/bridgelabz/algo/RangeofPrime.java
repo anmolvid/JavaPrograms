@@ -5,11 +5,10 @@ import com.bridgelabz.util.AlgorithmUtility;
 public class RangeofPrime {
 	public static void main(String[] args) {
 		
-		AlgorithmUtility a1= new AlgorithmUtility ();
 		
-		System.out.println("Enter any Number:");
-	    int n=AlgorithmUtility.intValue();
-	    //int p=AlgorithmUtility.Prime();
+		int j=1000;
+	   
+	    int p=AlgorithmUtility.prime(j);
 
 }
 }

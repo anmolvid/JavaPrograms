@@ -1,3 +1,17 @@
+//******************************************************************************
+// *  Compilation:  javac -d bin WeekOnStack.java
+// *  Execution:    java -cp bin com.bridgelabz.datastructureprograms.WeekOnStack n
+// *  
+// *  Purpose: ­> to find the number of binary search tree
+// *
+// *  @author  anmol vidyarthi
+// *  @version 1.0
+// *  @since   05-01-2019
+// *
+// ******************************************************************************/
+
+
+
 package com.bridgelabz.datastructure;
 
 import com.bridgelabz.util.DataStructureUtility;

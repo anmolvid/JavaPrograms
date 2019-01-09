@@ -107,10 +107,8 @@ public class FunctionalUtility<E> {
 
 ////Leap year
 
-	public void leapYear() {
-		Scanner S = new Scanner(System.in);
-		System.out.println("enter the year");
-		int year = S.nextInt();
+	public static int leapYear(int year) {
+		
 		{
 
 			if (String.valueOf(year).length() == 4) {
@@ -130,8 +128,17 @@ public class FunctionalUtility<E> {
 				System.out.println("yesr is not of four digits");
 			}
 		}
+		return 0;
 	}
 
+	
+	
+	
+	public static boolean isLeapYear(int year)
+    {
+        if  (((year % 4 == 0) && (year % 100 != 0))||year % 400 == 0) return true;
+        else return false;
+    }
 ////Harmonic series
 
 	public void harmonicN() {

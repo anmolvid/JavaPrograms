@@ -30,7 +30,7 @@ public class Anagram {
 	boolean an=AlgorithmUtility.isAnagram(m,n);
 	if(!an)
 	{
-		System.out.println(" an anagram");
+		System.out.println(" not an anagram");
 		
 	}
 	else

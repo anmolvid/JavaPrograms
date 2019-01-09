@@ -1,108 +1,124 @@
+/******************************************************************************
+ *  Compilation:  javac -d bin Queue.java
+ *  Execution:    java -cp bin com.bridgelabz.util.Queue
+ *  
+ *  Purpose: Contains all the functions to create a Queue
+ *
+ *  @author  Nikitha Mundargi
+ *  @version 1.0
+ *  @since   02-01-2019
+ *
+ ******************************************************************************/
+
 package com.bridgelabz.util;
 
-import java.util.NoSuchElementException;
 
-public class Queue {
-	protected int Queue[],front,rear,size,len;
 
-    /* Constructor */
-
-    public Queue(int n) {
-        // TODO Auto-generated
-        size = n;
-        len = 0;
-        Queue = new int[size];
-        front = -1;
-        rear = -1;
-    }
-
-//    public void Queue(int n)
-//    {
-//        size = n;
-//        len = 0;
-//        Queue = new int[size];
-//        front = -1;
-//        rear = -1;
-//    }   
-
-    /*  Function to check if queue is empty */
-
-    public boolean isEmpty()
-
-    {
-        return front == -1;
-    }   
-
-    /*  Function to check if queue is full */
-
-    public boolean isFull()
-    {
-        return front==0 && rear == size -1 ;
-    }   
-
-    /*  Function to get the size of the queue */
-
-    public int getSize()
-
-    {
-        return len ;
-    }   
-
-    /*  Function to check the front element of the queue */
-
-    public int peek()
-    {
-        if (isEmpty())
-
-            throw new NoSuchElementException("Underflow Exception");
-
-        return Queue[front];
-    }   
-
-    /*  Function to insert an element to the queue */
-
-    public void insert(int i)
-    {
-        if (rear == -1)
-
-        {
-            front = 0;
-
-            rear = 0;
-
-            Queue[rear] = i;
-        }
-
-        else if (rear + 1 >= size)
-
-            throw new IndexOutOfBoundsException("Overflow Exception");
-
-        else if ( rear + 1 < size)
-
-            Queue[++rear] = i;   
-
-        len++ ;   
-
-    }   
-    /*  Function to remove front element from the queue */
-    public int remove()
-    {
-        if (isEmpty())
-            throw new NoSuchElementException("Underflow Exception");
-        else
-        {
-            len-- ;
-            int ele = Queue[front];
-            if ( front == rear)
-            {
-                front = -1;
-
-                rear = -1;
-            }
-            else
-                front++;               
-            return ele;
-        }       
-    }
-
+public class Queue<T>{
+	
+	/*
+	* Front and rear are of the type Node and is 
+	* declared private to achieve encapsulation 
+	*/
+	private Node<T> front,rear;
+	
+	/*
+	* size is of the type integer and is 
+	* declared private to achieve encapsulation 
+	*/
+	private int size;
+	
+	
+	/**
+	* Constructor to initialize the instance variables of 
+	* class Queue
+	*/
+	public Queue(){
+		front=null;
+		rear=null;
+		size=0;
+	}
+	
+	/**
+	* Function to check if the queue is empty or not
+	* 
+	* @return true if empty else false
+	*/
+	public boolean isQueueEmpty(){
+		return front==null;
+	}
+	
+	/**
+	* Function to get the size of the queue
+	* 
+	* @return size
+	*/
+	public int getSize(){
+		return size;
+	}
+	
+	/**
+	* Function to insert the specified element in the queue
+	* 
+	* @param data the element to be inserted into the queue
+	*/
+	public void insert(T data){
+		Node<T> node=new Node<T>(data,null);
+		if(rear==null){
+			front=node;
+			rear=node;
+		}
+		else{
+			
+			//Function call to set the link present in Node class 
+			//of com.bridgelabz.datastructureprograms
+			rear.setNext(node);
+			
+			//Function call to get the link present in Node class 
+			//of com.bridgelabz.datastructureprograms
+			rear=rear.getNext();
+		}
+		size++;
+	}
+	
+	/**
+	* Function to remove the element 
+	* 
+	* @return the deleted element 
+	*/
+	public T remove(){
+		if(isQueueEmpty())
+			System.out.println("Underflow");
+		Node<T> curr=front;
+		front = curr.getNext();        
+        if (front == null){
+            rear =null;
+			size-- ; 
+		}       
+        
+      //Function call to get the data present in Node class 
+      //of com.bridgelabz.datastructureprograms
+        return curr.getData();
+	}
+	
+	/**
+	* Function to display all the elements in the queue
+	*/
+	public void display(){  
+		if(isQueueEmpty()){
+			System.out.println("Queue is empty");
+			return;
+		}
+		else{
+			Node<T> tNode=front;
+			while(tNode!=null){
+				System.out.print(tNode.data+" ");
+				tNode=tNode.next;
+			}
+			
+		}
+	}
+	 
+	 
 }
+
