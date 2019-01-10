@@ -1,3 +1,17 @@
+//******************************************************************************
+// *  Compilation:  javac -d bin WeekOnStack.java
+// *  Execution:    java -cp bin com.bridgelabz.datastructureprograms.WeekOnStack n
+// *  
+// *  Purpose: ­> to takes the month and year as command­line
+// * arguments and prints the Calendar of the month.
+// *
+// *  @author  anmol vidyarthi
+// *  @version 1.0
+// *  @since   05-01-2019
+// *
+// ******************************************************************************/
+
+
 package com.bridgelabz.datastructure;
 import com.bridgelabz.util.DataStructureUtility;
 public class Calender {

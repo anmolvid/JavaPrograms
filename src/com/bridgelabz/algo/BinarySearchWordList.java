@@ -27,7 +27,7 @@ public class BinarySearchWordList {
 	                    }
 	                    System.out.println("enter the key word which has to be searched ");
 	                    String key =AlgorithmUtility.StringValue();
-	                    int i = AlgorithmUtility.binSearch(tokens, key);
+	                    int i = AlgorithmUtility.binarySearchGeneric(tokens, key);
 	                    if (i >= 0) {
 	                        System.out.println(tokens[i] + " is present in " + (i + 1) + " position in the array");
 	                    } else

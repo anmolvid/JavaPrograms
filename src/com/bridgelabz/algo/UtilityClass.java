@@ -62,25 +62,25 @@ public class UtilityClass {
 				// Method 1- using static function of AlgorithmUtility class
 				// of com.bridgelabz.util package
 
-//				AlgorithmUtility.bubbleSort(array, num);
-//
-//				long end_time = System.nanoTime();
-//				et1 = end_time - start_time;
-//				elapsed_time.put("Integer Bubble Sort", et1);
-//				System.out.println("Elapsed time: " + et1);
-//				break;
-//
-//			case 2:
-//				long start_time1 = System.nanoTime();
-//
-//				// Method 2- using static function of AlgorithmUtility class
-//				// of com.bridgelabz.util package
-//				AlgorithmUtility.bubbleSort(array, num);
-//
-//				long end_time1 = System.nanoTime();
-//				et2 = end_time1 - start_time1;
-//				elapsed_time.put("String Bubble Sort", et2);
-//				System.out.println("Elapsed time: " + et2);
+				AlgorithmUtility.bubbleSort(array, num);
+
+				long end_time = System.nanoTime();
+				et1 = end_time - start_time;
+				elapsed_time.put("Integer Bubble Sort", et1);
+				System.out.println("Elapsed time: " + et1);
+				break;
+
+			case 2:
+				long start_time1 = System.nanoTime();
+
+				// Method 2- using static function of AlgorithmUtility class
+				// of com.bridgelabz.util package
+				AlgorithmUtility.bubbleSort(array, num);
+
+				long end_time1 = System.nanoTime();
+				et2 = end_time1 - start_time1;
+				elapsed_time.put("String Bubble Sort", et2);
+				System.out.println("Elapsed time: " + et2);
 				break;
 
 			case 3:
@@ -118,7 +118,7 @@ public class UtilityClass {
 
 				// Method 5- using static function of AlgorithmUtility class
 				// of com.bridgelabz.util package
-				int index = AlgorithmUtility.binSearch(array, key);
+				int index = AlgorithmUtility.binarySearchGeneric(array, key);
 
 				System.out.println("The key you are searching for is under the index= " + index);
 
@@ -138,7 +138,7 @@ public class UtilityClass {
 
 				// Method 6- using static function of AlgorithmUtility class
 				// of com.bridgelabz.util package
-				int index1 = AlgorithmUtility.binSearch(array, key1);
+				int index1 = AlgorithmUtility.binarySearchGeneric(array, key1);
 
 				System.out.println("The key you are searching for is under the index= " + index1);
 

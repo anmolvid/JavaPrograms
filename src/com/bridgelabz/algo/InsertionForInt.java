@@ -18,17 +18,17 @@ public class InsertionForInt {
 	public static void main(String[] args) {
 		System.out.println("enter the number of elements");
 		int num=AlgorithmUtility.intValue();
-		int a[]=new int[num];
+		String a[]=new String[num];
 		   
 	    System.out.println("Enter the elements");
 
 	    for(int i=0;i<a.length;i++)      
 	    {
-	        a[i]=AlgorithmUtility.intValue();     
+	        a[i]=AlgorithmUtility.StringValue();     
 	    }
 		
 	    
-	    AlgorithmUtility.insertionSortInt(a,num);//to call method
+	    AlgorithmUtility.insertionSort(a,num);//to call method
 	    
 	
 	    for(int i=0;i<a.length;i++)  

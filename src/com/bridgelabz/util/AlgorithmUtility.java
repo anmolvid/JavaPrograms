@@ -65,21 +65,21 @@ public class AlgorithmUtility {
 	
 	
 	//////////////////////
-	public static char[] sort(char[] ch)
+	public static <T extends Comparable<T>> T[] sort(T[] array)
 	{
-		char [] b=new char[ch.length];
-		for (int i=0;i<ch.length;i++)
+		T[] b = null;
+		for (int i=0;i<array.length;i++)
 			
 		{
 			int count=0;
-			for(int j=0;j<ch.length;j++)
+			for(int j=0;j<array.length;j++)
 			{
 				
-			if(ch[i]<ch[j])
+			if(array[i].compareTo(array[j])>0)
 			{
 				count++;
 			}
-			b[count]=ch[i];
+			b[count]= array[i];
 		}
 		}
 		return b;
@@ -211,22 +211,25 @@ public class AlgorithmUtility {
 ///bubble sort for integer and strings
 	
 	/**
-	 * @purpose: Reads in string prints them in sorted order using Bubble Sort
-	 * @param f
-	 */
-
-//	public static <T extends Comparable<T>> void bubbleSort(T  array[], int f) {
-//
-//		for (int i = 0; i < f; i++) {
-//			for (int j = 1; j < f; j++) {
-//				if (array[j - 1].compareTo(array[j]) > 0) {
-//					String temp = array[j - 1];
-//					array[j - 1] = array[j];
-//					array[j] = temp;
-//				}
-//			}
-//		}
-//	}
+	* static function to sort the array using bubble sort algorithm
+	* 
+	* @param array the array of integers that is to be sorted
+	* @param n the number of integers in the array
+	* @return integer array the array that is sorted
+	*/
+	public static <T extends Comparable<T>> T[] bubbleSort(T[] array,int n) {
+		T temp;
+		for(int i=0;i<n;i++) {
+			for(int j=0;j<n-1;j++) {
+				if(array[j].compareTo(array[j+1])>0) {
+					temp=array[j];
+					array[j]=array[j+1];
+					array[j+1]=temp;
+				}
+			}
+		}
+		return array;
+	}
 
 //bubble sort for integer
 	
@@ -281,26 +284,56 @@ public class AlgorithmUtility {
 
 //insertion for integer
 	/**
-	 * @purpose: Reads in integer prints them in sorted order using insertion Sort
-	 * @param n number of integer
-	 * @param arr[] array of integer
-	 * 
-	 */
-
-	public static void insertionSortInt(int arr[], int n) {
-
-		for (int i = 1; i < n; ++i) {
-			int key = arr[i];
-			int j = i - 1;
-
-			while (j >= 0 && arr[j] > key) {
-				arr[j + 1] = arr[j];
-				j = j - 1;
+	* static function to sort the given array of strings using insertion sort
+	* 
+	* @param array the array of strings that is to be sorted 
+	* @param num the number of strings to be sorted
+	* @return array the array of strings that are sorted
+	*/
+	public static <T extends Comparable<T>> T[] insertionSort(T[] array,int num) {
+		T temp;
+		for(int i=1;i<num;i++) {
+			temp=array[i];
+			int j;
+			j=i-1;
+			while(j>=0 && array[j].compareTo(temp)>0){
+				array[j+1]=array[j];
+				j=j-1;
 			}
-			arr[j + 1] = key;
+			array[j+1]=temp;
 		}
+		return array; 
 	}
 	
+	
+	/**
+	* static function that search for the given key in a array using 
+	* binary search algorithm
+	* 
+	* @param array the array of integers or strings from which key is to
+	* 				be found
+	* @param key the key to be searched in the array
+	* @return index the index of the key, found in the array
+	*/
+	public static <T extends Comparable<T>> int binarySearchGeneric(T[] array,T key){
+		int low=0,high=array.length-1;
+		int n=array.length;
+		bubbleSort(array, n);
+		int mid=(high+low)/2;
+		while(low<=high){
+			
+			if((key.compareTo(array[mid]))==0)
+			{
+				return mid;
+			}
+			else if((array[mid].compareTo(key))>0)
+				high=mid-1;
+			else
+				low=mid+1;
+			mid=(low+high)/2;
+		}
+		return -1;
+	}
 	/**
 	* 
 	* @param elapsed_time the map that contains [key, pair] values that
@@ -330,38 +363,7 @@ public class AlgorithmUtility {
 	        return temp;
 	}
 	
- //binary search
-	/**
-	 * @purpose: Reads in integer prints the key integer using binary search
-	 * @param n number of integer
-	 * @param arr[] array of integer
-	 * @param key key integer
-	 * 
-	 */
-
-	
-	public static void binarySearch(int n, int key, int [] arr) {
-	int  first, last, middle;
-      first  = 0;
-       last   = n - 1;
-       middle = (first + last)/2;
-    while( first <= last )
-    {
-     if ( arr[middle] < key )
-       first = middle + 1;    
-     else if ( arr[middle] == key)
-      {
-       System.out.println(key + " found at location " + (middle + 1) + ".");
-       break;
-     }
-     else
-        last = middle - 1;
-      middle = (first + last)/2;
-  }
-   if (first > last)
-      System.out.println(key + " isn't present in the list.\n");
-}
-	
+ 
 	
 	
 //merge sort

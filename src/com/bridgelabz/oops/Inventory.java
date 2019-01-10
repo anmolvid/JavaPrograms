@@ -12,8 +12,8 @@ public class Inventory {
 		price=0.0;
 	}
 	
-	public  getname(){
-		return name;
+//	public  getname(){
+//		return name;
 	}
 	
 }
