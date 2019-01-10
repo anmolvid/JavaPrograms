@@ -4,7 +4,7 @@
 // *  
 // *  Purpose: Contains all the functions to create a Stack
 // *
-// *  @author  Nikitha Mundargi
+// *  @author  Anmol Vidyarthi
 // *  @version 1.0
 // *  @since   02-01-2019
 // *
@@ -108,6 +108,58 @@ public class StackLinkedList<T> {
 		if (isEmpty() )
 			throw new NoSuchElementException("Underflow Exception") ;
 		return top.getData();
-	}    
+	}   
 }
 
+
+
+
+//public static boolean ParenthesisBalanced(char exp[]) {
+//
+//    StackLinkedList stack=new StackLinkedList();
+//
+//    for(int i=0;i<exp.length;i++)
+//    {
+//
+//        /*If the exp[i] is a starting 
+//                parenthesis then push it*/
+//        if (exp[i] ==  '(')
+//            stack.push(exp[i]);
+//
+//        /* If exp[i] is an ending parenthesis 
+//                 then pop from stack and check if the 
+//                 popped parenthesis is a matching pair*/
+//        if (exp[i] == ')')
+//        {
+//            if (stack.isEmpty())
+//            {
+//                return false;
+//            } 
+//
+//            /* Pop the top element from stack, if 
+//                   it is not a pair parenthesis of character 
+//                   then there is a mismatch. This happens for 
+//                   expressions like {(}) */
+//            else if ( !Matching(stack.pop(), exp[i]) )
+//            {
+//                //return false;
+//            }
+//        }
+//
+//    }
+//
+//    /* If there is something left in expression 
+//             then there is a starting parenthesis without 
+//             a closing parenthesis */
+//
+//    if (stack.isEmpty())
+//        return true; /*balanced*/
+//    else
+//     /*not balanced*/
+//        return false;
+//
+//}
+//
+//}
+//
+//

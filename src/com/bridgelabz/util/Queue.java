@@ -4,7 +4,7 @@
  *  
  *  Purpose: Contains all the functions to create a Queue
  *
- *  @author  Nikitha Mundargi
+ *  @author Anmol Vidyarthi
  *  @version 1.0
  *  @since   02-01-2019
  *

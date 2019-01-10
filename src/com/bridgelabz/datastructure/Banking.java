@@ -26,7 +26,7 @@ public static void main(String[] args) {
         DataStructureUtility q= new DataStructureUtility();
         
 //        int n=DataStructureUtility.readInteger();
-        Queue q1=new Queue(100);
+        Queue q1=new Queue();
         int money=10000;
         int ch = 0;
         do
