@@ -158,13 +158,24 @@ public class AddressBook {
         		   System.out.println("List is empty");
         	   }
     	   }
-    	   public void sortByZipCode(){
+    	   public static List<Person> getListOfPerson() {
+			return listOfPerson;
+		}
+
+		public static void setListOfPerson(List<Person> listOfPerson) {
+			AddressBook.listOfPerson = listOfPerson;
+		}
+
+		public void sortByZipCode(){
     			Collections.sort(listOfPerson,(person1,person2)->
     					person1.getAddress().getZipcode()>person2.getAddress().getZipcode()?1:
     						person1.getAddress().getZipcode()<person2.getAddress().getZipcode()?-1:
     							person1.getAddress().getZipcode()==person2.getAddress().getZipcode()?0:-10);
+		}
+		
+    			public void sortLastName(){
+    				Collections.sort(listOfPerson,(person1,person2)->person1.getLastname().compareTo(person2.getLastname()));
+    			}
     			
-    		}
 
 }
-

@@ -1,11 +1,18 @@
 package com.bridgelabz.util;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.bridgelabz.oops.Inventory;
+import com.bridgelabz.oops.InventoryList;
 
 public class OopsUtility {
 	static Scanner sc = new Scanner(System.in);
@@ -46,6 +53,18 @@ public class OopsUtility {
 		return 0l;
 	}
 	
+	
+	
+	public static float floatValue() {
+		try {
+			return sc.nextFloat();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0.0F;
+	}
+	
+	
 	public static String replaceString(String first,String fullName,String phoneNum,String date,String line) {
         final  String REGEX_NAME1 = "<<name>>";
         final  String REGEX_NAME2 = "<<full name>>";
@@ -85,6 +104,84 @@ public class OopsUtility {
         }
         return line;
     }
+
+	public static String readJsonFile(String filename) throws IOException{
+		FileReader fr=new FileReader(filename);
+		BufferedReader br=new BufferedReader(fr);
+		String str ="";
+		String line = "";
+		while((line=br.readLine())!=null){
+			str+=line;
+		}
+		br.close();
+		return str;
+	}
+	
+	public static Inventory insertData(){
+		Inventory inventory=new Inventory();
+		System.out.println("Enter the name:");
+		inventory.setName(StringValue());
+		System.out.println("Enter the weight");
+		inventory.setWeight(floatValue());
+		System.out.println("Enter the price");
+		inventory.setPrice(doubleValue());
+		return inventory;
+	}
+	
+	public static void writeFile(String json,String filename) throws IOException {
+		FileWriter fw=new FileWriter(filename);
+		BufferedWriter bw=new BufferedWriter(fw);
+		bw.write(json);
+		bw.close();
+	}
+	
+	public static void calulatePrice(List<InventoryList> list){  
+		double eachInventoryValue;
+		for (int i = 0; i < list.size(); i++) {
+			InventoryList inList = list.get(i);
+			System.out.println("Inventory name :" + inList.getInventoryName());
+			for (int j = 0; j < inList.getListofInventories().size(); j++) {
+				eachInventoryValue=(inList.getListofInventories().get(j).getPrice())*(inList.getListofInventories().get(j).getWeight());
+				System.out.println("total price:"+eachInventoryValue);
+			}	
+			System.out.println("---------------------------------------------");
+		}
+	}
+	 
+	
+	public static Queue<Queue<String>> deckQueueStore(String[] deck )
+    {
+        Queue<Queue<String>> mainQueue = new Queue<Queue<String>>();
+        Queue<String> queueLinkedList = new Queue<String>();
+        System.out.println("Total numver of deck of cards are " + deck.length);
+        for (int i = 0; i < 4; i++) {
+            String[] demo = new String[9];
+            for (int j = 0; j < 9; j++) {
+                demo[j] = deck[i + j * 4];
+            }
+            String[] str2 = AlgorithmUtility.sort(demo);
+            for (int k = 0; k < str2.length; k++) {
+                queueLinkedList.insert(str2[k]);
+            }
+            mainQueue.insert(queueLinkedList);
+            queueLinkedList = new Queue<String>();
+            continue;
+        }
+        return mainQueue;
+    }
+    public static void displayDeck(Queue<Queue<String>> mainQueue)
+    {
+        for (int i = 0; i < mainQueue.getSize(); i++) {
+            Queue<String> queue2 = mainQueue.remove();
+            System.out.println("---------------------------------------- Person " + (i + 1)
+                    + " -------------------------------------------");
+            for (int j = 0; j < queue2.getSize(); j++) {
+                System.out.print(queue2.remove() + " ");
+            }
+            System.out.println();
+        }
+    }
+
 
 
 
