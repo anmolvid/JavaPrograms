@@ -6,10 +6,17 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.type.CollectionType;
 
 import com.bridgelabz.oops.Inventory;
 import com.bridgelabz.oops.InventoryList;
@@ -65,6 +72,11 @@ public class OopsUtility {
 	}
 	
 	
+/////
+	static ObjectMapper objectMapper = new ObjectMapper();
+	////
+	
+	
 	public static String replaceString(String first,String fullName,String phoneNum,String date,String line) {
         final  String REGEX_NAME1 = "<<name>>";
         final  String REGEX_NAME2 = "<<full name>>";
@@ -87,6 +99,9 @@ public class OopsUtility {
         line = m4.replaceAll(date);
         return line;
     }
+	
+	///////
+	
 	public static String readFile(String str) throws FileNotFoundException {
         FileReader f = new FileReader(str);
        
@@ -104,6 +119,8 @@ public class OopsUtility {
         }
         return line;
     }
+	
+	///////
 
 	public static String readJsonFile(String filename) throws IOException{
 		FileReader fr=new FileReader(filename);
@@ -117,6 +134,8 @@ public class OopsUtility {
 		return str;
 	}
 	
+	
+	/////////////
 	public static Inventory insertData(){
 		Inventory inventory=new Inventory();
 		System.out.println("Enter the name:");
@@ -128,12 +147,17 @@ public class OopsUtility {
 		return inventory;
 	}
 	
+	//////////////
+	
 	public static void writeFile(String json,String filename) throws IOException {
 		FileWriter fw=new FileWriter(filename);
 		BufferedWriter bw=new BufferedWriter(fw);
 		bw.write(json);
 		bw.close();
 	}
+	
+	
+	//////////////
 	
 	public static void calulatePrice(List<InventoryList> list){  
 		double eachInventoryValue;
@@ -149,6 +173,7 @@ public class OopsUtility {
 	}
 	 
 	
+	//////////////
 	public static Queue<Queue<String>> deckQueueStore(String[] deck )
     {
         Queue<Queue<String>> mainQueue = new Queue<Queue<String>>();
@@ -169,6 +194,9 @@ public class OopsUtility {
         }
         return mainQueue;
     }
+	
+	
+	/////////////
     public static void displayDeck(Queue<Queue<String>> mainQueue)
     {
         for (int i = 0; i < mainQueue.getSize(); i++) {
@@ -183,8 +211,18 @@ public class OopsUtility {
     }
 
 
+    ///////////////
+    public static <T> List<T> userReadValue(String str, Class<?> clazz)
+			throws JsonParseException, JsonMappingException, IOException {
+		CollectionType colletion = objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, clazz);
+		return objectMapper.readValue(str, colletion);
+	}
 
-
+	public static <T> String userWriteValueAsString(List<T> list)
+			throws JsonGenerationException, JsonMappingException, IOException {
+		return objectMapper.writeValueAsString(list);
+	}
+///////////////
 
 
 }

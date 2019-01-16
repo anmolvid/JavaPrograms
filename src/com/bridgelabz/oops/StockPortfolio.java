@@ -20,11 +20,11 @@ public class StockPortfolio {
 		}
 		Stock stock = new Stock();
 		System.out.println("Enter the stock name");
-		stock.setStockName(OopsUtility.userString());
+		stock.setStockName(OopsUtility.StringValue());
 		System.out.println("Enter the number of stock");
-		stock.setNoOfShares(OopsUtility.userInt());
+		stock.setNoOfShares(OopsUtility.intValue());
 		System.out.println("Enter the price for per share");
-		stock.setSharePrice(OopsUtility.userFloat());
+		stock.setSharePrice(OopsUtility.floatValue());
 		listOfStock.add(stock);
 		String json = OopsUtility.userWriteValueAsString(listOfStock);
 		OopsUtility.writeFile(json, stockFile);
