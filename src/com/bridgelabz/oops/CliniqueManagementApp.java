@@ -8,10 +8,10 @@ import com.bridgelabz.util.OopsUtility;
 public class CliniqueManagementApp {
 
 	public static void main(String[] args) throws IOException {
-
-		
-		boolean run=true;
-		while(run) {
+       
+		int i=100;
+		//boolean run=true;
+		do {
 		System.out.println("Enter your choice");
 		System.out.println("1.add 2.search 3.To take appointment  4.Famous doctor 5.Famous Specialist 6.quit");
 		CliniqueManagement cm = new CliniqueManagement();
@@ -19,34 +19,34 @@ public class CliniqueManagementApp {
 		switch (choice) {
 		case 1:
 			cm.add();
-			run=true;
+			//run=true;
 			break;
 		case 2:
 			cm.search();
-			run=true;
+			//run=true;
 			break;
 			
 		case 3:
 			cm.takeAppointment();
-			run=true;
+			//run=true;
 			break;
 			
 		case 4:
 			
 			cm.famousDoctor();
-			run=true;
+			//run=true;
 			break;
 			
 		case 5:
 			cm.famousSpecialist();
-			run=true;
+			//run=true;
 			break;
 			
 		case 6:
-			run=false;
+			//run=false;
 			System.exit(0);
 			}
-		}
+		}while(i<=100);
 	}
 }
 

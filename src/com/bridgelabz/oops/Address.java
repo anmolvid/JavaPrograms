@@ -6,13 +6,7 @@ public class Address {
 	private String state;
 	private long zipcode;
 	
-	public Address()
-	{
-		street=null;
-		city=null;
-		state=null;
-		zipcode=0l;
-	}
+	
 	
 	
 	

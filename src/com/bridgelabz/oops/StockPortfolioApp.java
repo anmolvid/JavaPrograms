@@ -8,7 +8,7 @@ public class StockPortfolioApp {
 	public static void main(String[] args) throws IOException {
 		boolean isRunning = true;
 		while (isRunning) {
-			System.out.println("Enter-- 1:Add Stock  2:Calculate each stock value  3:Calculate value of total stocks  4:Display  5:Quit");
+			System.out.println("Enter-- 1:Add Stock  2:Calculate each stock value  3:Calculate value of total stocks  4:Display  ");
 			int choice = OopsUtility.intValue();
 			switch (choice) {
 			case 1:

@@ -8,7 +8,7 @@ import com.bridgelabz.util.OopsUtility;
 
 public class StockPortfolio {
 	static List<Stock> listOfStock = new ArrayList<>();
-	static String stockFile = "E:\\BridgeLabz\\JavaPrograms\\src\\com\\bridgelabz\\oops\\Stock.json";
+	static String stockFile = "/home/admin1/Documents/MyPrograms/JavaPrograms/src/com/bridgelabz/oops/stock.json";
 
 	public static void addStock() throws IOException {
 		String string = OopsUtility.readJsonFile(stockFile);

@@ -28,9 +28,9 @@ public class PalindromeChecker {
             int choice=DataStructureUtility.intValue();
             switch(choice)
             {
-            case 1:System.out.println("Enter string to check to check it is palindrome or not");
+            case 1:System.out.println("Enter string to check it is palindrome or not");
                     String str=DataStructureUtility.StringValue();
-                    char[] ch=str.toCharArray();
+                    char[] ch=str.toLowerCase().toCharArray();
                     int flag=0;
                     for(int i=0;i<ch.length;i++)
                     {

@@ -5,7 +5,7 @@ public class Person {
 	private String lastname;
 
 	private long contactno;
-	private Address address = new Address();
+	private Address address;
 
 	public Person() {
 		firstname = null;
@@ -31,7 +31,7 @@ public class Person {
 	}
 
 	public Address getAddress() {
-		return address;
+		return this.address;
 	}
 
 	public void setAddress(Address address) {

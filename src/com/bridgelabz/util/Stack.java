@@ -37,6 +37,7 @@ package com.bridgelabz.util;
 	    {
 	        return (top == -1) ? true : false;
 	    }
+	    
 	    public static boolean Matching(char character1, char character2)
 	    {
 	        if (character1 == '(' && character2 == ')')

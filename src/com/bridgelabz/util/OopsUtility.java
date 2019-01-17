@@ -22,7 +22,7 @@ import com.bridgelabz.oops.Inventory;
 import com.bridgelabz.oops.InventoryList;
 
 public class OopsUtility {
-	static Scanner sc = new Scanner(System.in);
+	private static Scanner sc = new Scanner(System.in);
 
 	public static int intValue() {
 		try {
@@ -78,10 +78,10 @@ public class OopsUtility {
 	
 	
 	public static String replaceString(String first,String fullName,String phoneNum,String date,String line) {
-        final  String REGEX_NAME1 = "<<name>>";
+        final  String REGEX_NAME1 = "<{2}+\\w+>{2}";
         final  String REGEX_NAME2 = "<<full name>>";
-        final  String REGEX_NAME3 = "xxxxxxxxxx";
-        final  String REGEX_NAME4 = "<<XX/XX/XXXX>>";
+        final  String REGEX_NAME3 = "x{10}";
+        final  String REGEX_NAME4 = "\\d{2}+/+\\d{2}+/+\\d{4}";
         Pattern p1 = Pattern.compile(REGEX_NAME1);
         Matcher m1 = p1.matcher(line);
         line = m1.replaceAll(first);

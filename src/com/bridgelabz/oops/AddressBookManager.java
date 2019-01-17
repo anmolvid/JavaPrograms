@@ -12,9 +12,9 @@ import com.bridgelabz.util.OopsUtility;
 
 public class AddressBookManager {
 
-	private static String ch_book;
+	static String ch_book;
 	static String path="/home/admin1/Documents/MyPrograms/JavaPrograms/";
-	AddressBook addressBook = new AddressBook();
+	private AddressBook addressBook = new AddressBook();
 	ObjectMapper objectMapper = new ObjectMapper();
 	List<Person> listOfPersons = new ArrayList<Person>();
 	File[] arrayOfFiles = new File(System.getProperty("user.dir")).listFiles();
@@ -89,14 +89,14 @@ public class AddressBookManager {
 			if (file.getName().endsWith(".json"))
 				System.out.println(file.getName());
 		}
-		System.out.println("Choose the address book you want to save as with extention");
+		System.out.println("Choose the address book you want to save as with extention (.json)");
 		String ch_book1 = OopsUtility.StringValue();
 		File file = new File(path + ch_book1);
 		boolean rs = file.createNewFile();
 		if (rs) {
 			System.out.println("File is created");
 			String json = objectMapper.writeValueAsString(AddressBook.getListOfPerson());
-			OopsUtility.writeFile(json, ch_book);
+			OopsUtility.writeFile(json, ch_book1);
 			System.out.println("Address book details saved");
 		} else {
 			System.out.println("File of that name already exists");
@@ -105,16 +105,14 @@ public class AddressBookManager {
  
 	public void close() {
 		addressBook = null;
-		objectMapper = null;
 		listOfPersons = null;
-		arrayOfFiles = null;
 
 	}
 
 	public void addressBook() throws IOException {
 		AddressBook ab = new AddressBook();
-		boolean isRunning = true;
-		while (isRunning) {
+		
+		do {
 			System.out.println("Enter choice");
 			System.out.println(
 					"1:Add Person  2:Edit Person  3:Display Persons  4:Delete Person  5:Sort  6:Go Back to main ");
@@ -122,52 +120,68 @@ public class AddressBookManager {
 			switch (choice) {
 			case 1:
 				ab.addPerson();
-				isRunning = true;
+				
 				break;
 			case 2:
 				ab.editPerson();
-				isRunning = true;
+				
 				break;
 			case 3:
 				ab.display();
-				isRunning = true;
+				
 				break;
 			case 4:
 				ab.remove();
-				isRunning = true;
+				
 				break;
 			case 5:
-				boolean isSort = true;
-				while (isSort) {
-					System.out.println("Enter your choice");
-					System.out.println("1:Sort by Last Name  2:Sort by Zip Code");
-					int ch = OopsUtility.intValue();
-					switch (ch) {
-					case 1:
-						System.out.println("Sorting by last name");
-						ab.sortLastName();
-						System.out.println("Your list is sorted");
-						break;
-					case 2:
-						System.out.println("Sorting by zip code");
-						ab.sortByZipCode();
-						System.out.println("Your list is sorted");
-						break;
-					default:
-						System.out.println("Invalid choice");
-						isSort = false;
-						break;
-					}
-				}
-				break;
+			     sorting();
+			     break;
+				
+
+
 			case 6:
 				AddressBookApp.main(null);
 			default:
 				System.out.println("Invalid choice");
-				isRunning = false;
+				
 				break;
 			}
+		}while(ab!=null);
+	
+	}
+	
+	
+	private void sorting() {
+	
+		AddressBook ab = new AddressBook();
+
+		System.out.println("Enter your choice");
+		System.out.println("1:Sort by Last Name  2:Sort by Zip Code 3. Quit");
+		int ch = OopsUtility.intValue();
+		switch (ch) {
+		case 1:
+			System.out.println("Sorting by last name");
+			ab.sortLastName();
+			System.out.println("Your list is sorted");
+			break;
+		case 2:
+			System.out.println("Sorting by zip code");
+			ab.sortByZipCode();
+			System.out.println("Your list is sorted");
+			break;
+			
+		case 3:
+			System.out.println("Quit");
+			ab = null;
+			break;
+			
+		default:
+			System.out.println("Invalid choice");
+			
+			break;
 		}
 	}
+	
 }
 
