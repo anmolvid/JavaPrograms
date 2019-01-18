@@ -1,9 +1,9 @@
 package com.bridgelabz.oops;
 
 public class Stock {
-	private String stockName;
-	private int noOfShares;
-	private float sharePrice;
+	private  String stockName;
+	private  int noOfShares;
+	private  float sharePrice;
 	
 	public Stock(){
 		stockName=null;
