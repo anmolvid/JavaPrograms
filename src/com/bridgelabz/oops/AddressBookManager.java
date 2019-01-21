@@ -14,18 +14,10 @@ public class AddressBookManager {
 
 	static String ch_book;
 	static String path="/home/admin1/Documents/MyPrograms/JavaPrograms/";
-	private AddressBook addressBook = new AddressBook();
+	
 	ObjectMapper objectMapper = new ObjectMapper();
-	List<Person> listOfPersons = new ArrayList<Person>();
+	static List<Person> listOfPersons = new ArrayList<Person>();
 	File[] arrayOfFiles = new File(System.getProperty("user.dir")).listFiles();
-
-	public static String getCh_book() {
-		return ch_book;
-	}
-
-	public static void setCh_book(String ch_book) {
-		AddressBookManager.ch_book = ch_book;
-	}
 
 	public void createBook() throws IOException {
 		System.out.println("Enter name of address book");
@@ -47,7 +39,7 @@ public class AddressBookManager {
 		}
 		System.out.println("Choose the address book");
 		ch_book = OopsUtility.StringValue();
-		setCh_book(ch_book);
+
 		for (File file : arrayOfFiles) {
 			String filename = file.getName();
 			if (ch_book.equals(filename)) {
@@ -56,7 +48,7 @@ public class AddressBookManager {
 					String string = OopsUtility.readJsonFile(filename);
 					listOfPersons = objectMapper.readValue(string, new TypeReference<List<Person>>() {
 					});
-					AddressBook.setListOfPerson(listOfPersons);
+					
 					addressBook();
 				} else {
 					System.out.println("Address Book is empty");
@@ -68,12 +60,13 @@ public class AddressBookManager {
 	}
 
 	public void saveBook() {
-		System.out.println("Saving " + getCh_book() + " address book");
+		System.out.println("Saving " + ch_book + " address book");
 		for (File file : arrayOfFiles) {
 			String filename = file.getName();
-			if (getCh_book().equals(filename)) {
+			if (ch_book.equals(filename)) {
 				try {
-					String json = objectMapper.writeValueAsString(AddressBook.getListOfPerson());
+//					String json = objectMapper.writeValueAsString(AddressBook.getListOfPerson());
+					String json = OopsUtility.userWriteValueAsString(listOfPersons);
 					OopsUtility.writeFile(json, filename);
 					System.out.println("Address book details saved");
 				} catch (Exception e) {
@@ -95,7 +88,7 @@ public class AddressBookManager {
 		boolean rs = file.createNewFile();
 		if (rs) {
 			System.out.println("File is created");
-			String json = objectMapper.writeValueAsString(AddressBook.getListOfPerson());
+			String json = OopsUtility.userWriteValueAsString(listOfPersons);
 			OopsUtility.writeFile(json, ch_book1);
 			System.out.println("Address book details saved");
 		} else {
@@ -104,7 +97,7 @@ public class AddressBookManager {
 	}
  
 	public void close() {
-		addressBook = null;
+		
 		listOfPersons = null;
 
 	}
@@ -127,11 +120,11 @@ public class AddressBookManager {
 				
 				break;
 			case 3:
-				ab.display();
+				ab.displayAddress();
 				
 				break;
 			case 4:
-				ab.remove();
+				ab.deletePerson();
 				
 				break;
 			case 5:
@@ -162,7 +155,7 @@ public class AddressBookManager {
 		switch (ch) {
 		case 1:
 			System.out.println("Sorting by last name");
-			ab.sortLastName();
+			ab.sortByLastName();
 			System.out.println("Your list is sorted");
 			break;
 		case 2:

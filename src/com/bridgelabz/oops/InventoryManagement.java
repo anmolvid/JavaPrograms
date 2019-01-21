@@ -16,8 +16,8 @@ public class InventoryManagement {
 		
 		List<Inventory> listin = new ArrayList<Inventory>();
 		Inventory inventory = new Inventory();
-		String filename = "/home/admin1/Documents/MyPrograms/JavaPrograms/src/com/bridgelabz/oops/inventory.json";
-		String str = OopsUtility.readJsonFile(filename);
+		String INVENTORY_PATH = "/home/admin1/Documents/MyPrograms/JavaPrograms/src/com/bridgelabz/oops/inventory.json";
+		String str = OopsUtility.readJsonFile(INVENTORY_PATH);
 		int count = 10;
 		do {
 			System.out.println("Enter the choice");
@@ -71,7 +71,7 @@ public class InventoryManagement {
 					}
 					System.out.println("The entered element is added to the list");
 					String json = objMap.writeValueAsString(list);
-					OopsUtility.writeFile(json, filename);
+					OopsUtility.writeFile(json, INVENTORY_PATH);
 					System.out.println("Inventory list has been written on to file");
 				} catch (Exception e) {
 					System.out.println("File is empty!");

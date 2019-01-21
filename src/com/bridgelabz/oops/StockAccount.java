@@ -14,21 +14,18 @@ import com.bridgelabz.util.StackLinkedList;
 
 public class StockAccount {
 	static String stocks_acc;
-	static String path = "/home/admin1/Documents/MyPrograms/JavaPrograms/";
-	// private AddressBook addressBook = new AddressBook();
-	// ObjectMapper objectMapper = new ObjectMapper();
+	static final String PATH = "/home/admin1/Documents/MyPrograms/JavaPrograms/";
 	static List<StockCustomer> listOfCustomer = new ArrayList<StockCustomer>();
-	static GenericLinkedList<String> list = new GenericLinkedList<String>();
-	static StackLinkedList<String> slist = new StackLinkedList<String>();
-	static StackLinkedList<String> templist = new StackLinkedList<String>();
-	
-	static Queue<String> queue = new Queue<String>();
+	private static GenericLinkedList<String> list = new GenericLinkedList<String>();
+	private static StackLinkedList<String> slist = new StackLinkedList<String>();
+	private static StackLinkedList<String> templist = new StackLinkedList<String>();
+	private static Queue<String> queue = new Queue<String>();
 
 	public static void createAccount() throws IOException {
 
 		System.out.println("Enter your name");
 		String name = OopsUtility.StringValue();
-		File file = new File(path + name + ".json");
+		File file = new File(PATH + name + ".json");
 		boolean rs = file.createNewFile();
 		if (rs) {
 			System.out.println("account is created");
@@ -71,7 +68,7 @@ public class StockAccount {
 		String s_name = OopsUtility.StringValue();
 		System.out.println("Enter the no of shares you want to buy ");
 		int shares = OopsUtility.intValue();
-		String s1 = OopsUtility.readJsonFile(path + stocks_acc);
+		String s1 = OopsUtility.readJsonFile(PATH + stocks_acc);
 		String s2 = OopsUtility.readJsonFile(StockPortfolio.stockFile);
 		StockPortfolio.listOfStock = OopsUtility.userReadValue(s2, Stock.class);
 		try {
@@ -121,7 +118,7 @@ public class StockAccount {
 		String name1 = OopsUtility.StringValue();
 		System.out.println("Enter the no of stock you want to sell ");
 		int no = OopsUtility.intValue();
-		String s1 = OopsUtility.readJsonFile(path + stocks_acc);
+		String s1 = OopsUtility.readJsonFile(PATH + stocks_acc);
 		String s2=OopsUtility.readJsonFile(StockPortfolio.stockFile);
 		StockPortfolio.listOfStock=OopsUtility.userReadValue(s2, Stock.class);
 		try {
@@ -210,7 +207,7 @@ public class StockAccount {
 	}
 
 	public static void addreport() throws IOException {
-		String string = OopsUtility.readJsonFile(path + stocks_acc);
+		String string = OopsUtility.readJsonFile(PATH + stocks_acc);
 		try {
 			listOfCustomer = OopsUtility.userReadValue(string, StockCustomer.class);
 			for (StockCustomer customer : listOfCustomer) {

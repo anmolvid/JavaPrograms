@@ -1,180 +1,171 @@
 package com.bridgelabz.oops;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import com.bridgelabz.util.OopsUtility;
 
 public class AddressBook {
-	static List<Person> listOfPerson = new ArrayList<Person>();
 
-	public void addPerson() {
-		Person person = new Person();
-		System.out.println("Enter the first name");
-		person.setFirstname(OopsUtility.StringValue());
-		System.out.println("Enter last name");
-		person.setLastname(OopsUtility.StringValue());
-		System.out.println("Enter contact number");
-		person.setContactno(OopsUtility.longValue());
+    private static List<Person> persons = new ArrayList<Person>();
 
-		Address address = new Address();
-		System.out.println("Enter street");
-		address.setStreet(OopsUtility.StringValue());
-		System.out.println("Enter city");
-		address.setCity(OopsUtility.StringValue());
-		System.out.println("Enter state");
-		address.setState(OopsUtility.StringValue());
-		System.out.println("Enter zipcode");
-		address.setZipcode(OopsUtility.longValue());
-		person.setAddress(address);
-		listOfPerson.add(person);
-	}
+    public AddressBook() {}
+   
+    public AddressBook(List<Person> persons2) {
+        persons = persons2;
+    }
 
-	public void editPerson() {
-		System.out.println("Enter the first name of the person you want to edit");
-		String fname = OopsUtility.StringValue();
-		System.out.println("Enter the last name");
-		String lname = OopsUtility.StringValue();
-		for (Person p : listOfPerson) {
-			if (fname.equals(p.getFirstname()) && lname.equals(p.getLastname())) {
-				do {
-				System.out.println("Enter option you want to edit");
-				System.out.println("1. Contact No  2. Address  3.Quit");
-				int option = OopsUtility.intValue();
-					switch (option) {
-					case 1:
-						System.out.println("Enter new number");
-						long newno = OopsUtility.longValue();
-						p.setContactno(newno);
-						System.out.println("Contact number got updated");
-						break;
-					case 2:
-						System.out.println("Enter the option you want to edit");
-						Address add = p.getAddress();
-						addressUpdate(add);
-						break;
-						
-					case 3:
-						System.out.println("Quit");
-						add = null;
-						break;
+    public void addPerson() {
+        Person person = new Person();
+        System.out.println("Enter first name");
+        person.setFirstname(OopsUtility.StringValue());
+        System.out.println("Enter last name");
+        person.setLastname(OopsUtility.StringValue());
+        System.out.println("Enter phone number");
+        person.setContactno(OopsUtility.longValue());
+        person.setAddress(getAddress());
+        persons.add(person);
+    }
 
-					default:
-						System.exit(0);
-					}
-				} while (p != null);
+    public Address getAddress() {
+        Address address = new Address();
+        System.out.println("Enter street");
+        address.setStreet(OopsUtility.StringValue());
+        System.out.println("Enter city");
+        address.setCity(OopsUtility.StringValue());
+        System.out.println("Enter state");
+        address.setState(OopsUtility.StringValue());
+        System.out.println("Enter Zip Code");
+        address.setZipcode(OopsUtility.longValue());
+        return address;
+    }
 
-			} else {
-				System.out.println("Person does not exit in the address book");
-			}
-		}
-	}
+    public void editPerson() {
+        System.out.println("Enter the first name of the person which has to be edited");
+        String fName = OopsUtility.StringValue();
+        System.out.println("Enter the last name of the person which has to be edited");
+        String lName = OopsUtility.StringValue();
+        Optional<Person> optional = persons.parallelStream()
+                .filter(person -> fName.equals(person.getFirstname()) && lName.equals(person.getLastname())).findAny();
+        if (optional.isPresent()) {
+            editPerson(optional.get());
+        } else {
+            System.out.println("Entered first name and last name does not exist in address book");
+        }
+    }
+   
+    public void editPerson(Person existingPerson)
+    {
+        String reply= null;
+        do {
+            System.out.println("Whate do you want to edit");
+            System.out.println("1.Phone Number 2.Address 3.Go Back");
+            int choice1 = OopsUtility.intValue();
+            switch (choice1) {
+            case 1:
+                System.out.println("Enter the phone number which has to be edited");
+                existingPerson.setContactno(OopsUtility.longValue());
+                System.out.println("Phone number updated");
+                break;
+            case 2:
+                existingPerson.setAddress(editAddress(existingPerson));
+                break;
+            case 3:
+                break;
+            default:
+                System.out.println("Please select correct choice");
+                break;
+            }
+            System.out.println("Would you like to edit more details for the person? Yes/No");
+            reply = OopsUtility.StringValue();
+        } while (reply.equalsIgnoreCase("Yes"));       
+    }
 
-	public void addressUpdate(Address add) {
-		do {
-		System.out.println("1. Street 2. City 3.State 4.Zipcode  5.Quit");
-		int choice = OopsUtility.intValue();
-			switch (choice) {
-			case 1:
-				System.out.println("enter street: ");
-				String str = OopsUtility.StringValue();
-				add.setStreet(str);
-				System.out.println("Street got updated");
-				break;
+    public Address editAddress(Person existingPerson) {
+        System.out.println("Editing address now");
+        Address address = existingPerson.getAddress();
+        String reply = null;
+        do {
+            System.out.println("1.Street\n2.City\n3.State\n4.Zip Code\n5.To go back");
+            int choice2 = OopsUtility.intValue();
+            switch (choice2) {
+            case 1:
+                System.out.println("Enter street which has to be edited");
+                address.setStreet(OopsUtility.StringValue());
+                break;
+            case 2:
+                System.out.println("Enter city which has to be edited");
+                address.setCity(OopsUtility.StringValue());
+                break;
+            case 3:
+                System.out.println("Enter state which has to be edited");
+                address.setState(OopsUtility.StringValue());
+                break;
+            case 4:
+                System.out.println("Enter Zip code which has to be edited");
+                address.setZipcode(OopsUtility.longValue());
+                break;
+            case 5:
+            default:
+                System.out.println("Please select correct choice");
+                break;
+            }
+            System.out.println("Would you like to edit more details for the person? Yes/No");
+            reply = OopsUtility.StringValue();
+        } while (reply.equalsIgnoreCase("Yes"));
+        return address;
+    }
 
-			case 2:
-				System.out.println("enter city");
-				String city = OopsUtility.StringValue();
-				add.setCity(city);
-				System.out.println("City got updated");
-				break;
+    public void displayAddress() {
+        if (!persons.isEmpty()) {
+            persons.forEach(person -> {
+                System.out.println("First name : " + person.getFirstname());
+                System.out.println("Last name : " + person.getLastname());
+                System.out.println("Phone number : " + person.getContactno());
+                Address addr = person.getAddress();
+                System.out.println("Address :\n");
+                System.out.println("Street : " + addr.getStreet());
+                System.out.println("City : " + addr.getCity());
+                System.out.println("State : " + addr.getState());
+                System.out.println("Zip Code : " + addr.getZipcode());
+                System.out.println("--------------------------------------");
+            });
+        } else {
+            System.out.println("Address book is empty");
+        }
+    }
 
-			case 3:
-				System.out.println("enter the state");
-				String st = OopsUtility.StringValue();
-				add.setState(st);
-				System.out.println("State got updated");
-				break;
+    public void deletePerson() {
+        System.out.println("Enter the first name of the person which has to be deleted");
+        String fName = OopsUtility.StringValue();
+        System.out.println("Enter the last name of the person which has to be deleted");
+        String lName = OopsUtility.StringValue();
+        if (!persons.isEmpty()) {
+            boolean isDeleted = persons.removeIf(person -> fName.equals(person.getFirstname()) && lName.equals(person.getLastname()));
+            if (!isDeleted) {
+                System.out.println("Entered first name and last name does not exist in address book");
+            }
+        } else {
+            System.out.println("Address book is empty");
+        }
+       
+    }
 
-			case 4:
-				System.out.println("enter the zipcode");
-				long zp = OopsUtility.longValue();
-				add.setZipcode(zp);
-				System.out.println("zipcode got updated");
-				break;
-			case 5:
-				System.out.println("Quit");
-				add = null;
-				break;
+    public void sortByLastName() {
+        Collections.sort(persons, (person1, person2) -> person1.getLastname().compareTo(person2.getLastname()));
+        System.out.println("Sorted by last Name");
+    }
 
-				
+    public void sortByZipCode() {
+        Collections.sort(persons,
+                (person1, person2) -> person1.getAddress().getZipcode() > person2.getAddress().getZipcode() ? 1
+                        : person1.getAddress().getZipcode() < person2.getAddress().getZipcode() ? -1
+                                : 0);
+        System.out.println("Sorted via Zip code");
 
-			default:
-				System.exit(0);
-
-			}
-		} while (add != null);
-		System.out.println("You have exited");
-	}
-
-	public void display() {
-		for (Person per : listOfPerson) {
-			System.out.println(" firstname: " + per.getFirstname());
-			System.out.println(" Lastname: " + per.getLastname());
-			System.out.println("Contact Number " + per.getContactno());
-			Address add = per.getAddress();
-			System.out.println(" Street " + add.getStreet());
-			System.out.println("City:"
-					+ "" + add.getCity());
-			System.out.println("State " + add.getState());
-
-		}
-
-	}
-
-	public void remove() {
-		System.out.println("Enter the first name of the person you want to edit");
-		String fname = OopsUtility.StringValue();
-		System.out.println("Enter the last name");
-		String lname = OopsUtility.StringValue();
-
-		if (!listOfPerson.isEmpty()) {
-			for (Person pp : listOfPerson) {
-
-				if (fname.equals(pp.getFirstname()) && lname.equals(pp.getLastname())) {
-					listOfPerson.remove(pp);
-					System.out.println("Person got deleted");
-				} else {
-					System.out.println("Person doesnt exit ");
-				}
-
-			}
-
-		}
-
-		else {
-			System.out.println("List is empty");
-		}
-	}
-
-	public static List<Person> getListOfPerson() {
-		return listOfPerson;
-	}
-
-	public static void setListOfPerson(List<Person> listOfPerson) {
-		AddressBook.listOfPerson = listOfPerson;
-	}
-
-	public void sortByZipCode() {
-		Collections.sort(listOfPerson,
-				(person1, person2) -> person1.getAddress().getZipcode() > person2.getAddress().getZipcode() ? 1
-						: person1.getAddress().getZipcode() < person2.getAddress().getZipcode() ? -1
-								: person1.getAddress().getZipcode() == person2.getAddress().getZipcode() ? 0 : -10);
-	}
-
-	public void sortLastName() {
-		Collections.sort(listOfPerson, (person1, person2) -> person1.getLastname().compareTo(person2.getLastname()));
-	}
-
+    }
 }
+
+
+
