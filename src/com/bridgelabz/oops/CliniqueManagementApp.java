@@ -43,8 +43,9 @@ public class CliniqueManagementApp {
 			break;
 			
 		case 6:
-			//run=false;
-			System.exit(0);
+			System.out.println("Quit");
+			cm = null;
+			break;
 			}
 		}while(i<=100);
 	}

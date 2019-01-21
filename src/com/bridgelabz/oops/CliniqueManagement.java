@@ -14,7 +14,7 @@ import com.bridgelabz.util.OopsUtility;
 
 public class CliniqueManagement {
 
-	static List<Patient> listOfPatient = new ArrayList<Patient>();
+//	static List<Patient> listOfPatient = new ArrayList<Patient>();
 	static List<Doctor> listOfDoctors = new ArrayList<Doctor>();
 	static List<Appointment> listOfAppointment = new ArrayList<Appointment>();
 	static String path = "/home/admin1/Documents/MyPrograms/JavaPrograms/src/com/bridgelabz/oops/Doctor.json";
@@ -65,6 +65,7 @@ public class CliniqueManagement {
 	}
 
 	public void addpatient() throws IOException {
+		List<Patient> listOfPatient = new ArrayList<Patient>();
 		String pat = OopsUtility.readJsonFile(file);
 		try {
 			listOfPatient = OopsUtility.userReadValue(pat, Patient.class);
@@ -256,6 +257,7 @@ public class CliniqueManagement {
 
 	public Patient searchpatById() throws IOException {
 		String d = OopsUtility.readJsonFile(file);
+		List<Patient> listOfPatient = new ArrayList<Patient>();
 
 		listOfPatient = OopsUtility.userReadValue(d, Patient.class);
 
@@ -276,6 +278,7 @@ public class CliniqueManagement {
 
 	public Patient searchpatByNo() throws IOException {
 		String d = OopsUtility.readJsonFile(file);
+		List<Patient> listOfPatient = new ArrayList<Patient>();
 
 		listOfPatient = OopsUtility.userReadValue(d, Patient.class);
 
@@ -328,34 +331,40 @@ public class CliniqueManagement {
 
 	public static void searchDoc(List<Doctor> doctorList, Patient patient) {
 		System.out.println("Enter id");
+//		Appointment appointment = null;
+//		List<Patient> patientAppointmentList = appointment.getListOfPatients();
 		int id = OopsUtility.intValue();
+		int flag = 0;
 		try {
 			for (Doctor doctor : doctorList) {
 				if (id == doctor.getId()) {
-					for (Appointment appointment : listOfAppointment) {
-						if (doctor.getDname().equals(appointment.getDoc_name())) {
-							List<Patient> patientAppointmentList = appointment.getListOfPatients();
+					for (Appointment app : listOfAppointment) {
+						if (doctor.getDname().equals(app.getDoc_name())) {
+							List<Patient> patientAppointmentList = app.getListOfPatients();
 							if (patientAppointmentList.size() < 5) {
-								patientAppointmentList.add(patient);
-								appointment.setListOfPatients(patientAppointmentList);
-								System.out.println("Appointment is set");
-								break;
+								for (Patient patient2 : patientAppointmentList) {
+									if (patient.getPid() == patient2.getPid()) {
+										System.out.println("You have an appointment already");
+										flag = 1;
+										break;
+									} else {
+										patientAppointmentList.add(patient);
+										app.setListOfPatients(patientAppointmentList);
+										System.out.println("Appointment is set");
+										flag = 1;
+										break;
+									}
+								}
+
 							} else {
 								System.out.println("Appointment is full");
+								flag = 1;
 								break;
 							}
-						} else {
-							Appointment newAppointment = new Appointment();
-							newAppointment.setDoc_name(doctor.getDname());
-							List<Patient> newPatientAppointmentList = new ArrayList<>();
-							newPatientAppointmentList.add(patient);
-							newAppointment.setListOfPatients(newPatientAppointmentList);
-							listOfAppointment.add(newAppointment);
-							System.out.println("Appointment is set");
-							break;
 						}
 					}
-					if (listOfAppointment.size() == 0) {
+
+					if (flag == 0) {
 						Appointment appointment2 = new Appointment();
 						List<Patient> patientList1 = new ArrayList<Patient>();
 						patientList1.add(patient);

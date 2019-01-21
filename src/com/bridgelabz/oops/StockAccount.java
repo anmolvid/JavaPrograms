@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import com.bridgelabz.util.GenericLinkedList;
@@ -22,7 +21,7 @@ public class StockAccount {
 	static GenericLinkedList<String> list = new GenericLinkedList<String>();
 	static StackLinkedList<String> slist = new StackLinkedList<String>();
 	static StackLinkedList<String> templist = new StackLinkedList<String>();
-	static File[] arrayOfFiles = new File(System.getProperty("user.dir")).listFiles();
+	
 	static Queue<String> queue = new Queue<String>();
 
 	public static void createAccount() throws IOException {
@@ -40,6 +39,7 @@ public class StockAccount {
 
 	public static void openAccount() throws IOException {
 		System.out.println("accounts avalabile are :");
+		File[] arrayOfFiles = new File(System.getProperty("user.dir")).listFiles();
 		for (File file : arrayOfFiles) {
 			if (file.getName().endsWith(".json"))
 				System.out.println(file.getName());
@@ -65,7 +65,6 @@ public class StockAccount {
 	}
 
 	public static void buyStocks() throws IOException {
-		// File[] arrayOfFiles = new File(System.getProperty("user.dir")).listFiles();
 		System.out.println("These are the stocks available");
 		StockPortfolio.displayStockDetails();
 		System.out.println("Enter the stock you want to buy ");
@@ -101,6 +100,7 @@ public class StockAccount {
 				transaction.setDate(date);
 				transaction.setTransactionStatus("purchase");
 				st.setTransaction(transaction);
+				return st;
 			}
 
 		}
@@ -122,31 +122,29 @@ public class StockAccount {
 		System.out.println("Enter the no of stock you want to sell ");
 		int no = OopsUtility.intValue();
 		String s1 = OopsUtility.readJsonFile(path + stocks_acc);
+		String s2=OopsUtility.readJsonFile(StockPortfolio.stockFile);
+		StockPortfolio.listOfStock=OopsUtility.userReadValue(s2, Stock.class);
 		try {
 			listOfCustomer = OopsUtility.userReadValue(s1, StockCustomer.class);
 			StockCustomer s_Customer = updateStock(name1, no);
 			listOfCustomer.add(s_Customer);
-			Stock stock = update(name1, no);
-			StockPortfolio.listOfStock.add(stock);
-			String json = OopsUtility.userWriteValueAsString(StockPortfolio.listOfStock);
-			OopsUtility.writeFile(json, path);
-
+			update(name1, no);
 		} catch (Exception e) {
 			System.out.println("Buy stock before selling!");
 		}
+		String json = OopsUtility.userWriteValueAsString(StockPortfolio.listOfStock);
+		OopsUtility.writeFile(json, StockPortfolio.stockFile);
 	}
 
-	public static Stock update(String s_name, int s_num) {
+	public static void update(String s_name, int s_num) {
 		for (Stock stock : StockPortfolio.listOfStock) {
 			if (s_name.equals(stock.getStockName())) {
 
 				int newno = stock.getNoOfShares() + s_num;
 				stock.setNoOfShares(newno);
-				return stock;
 
 			}
 		}
-		return null;
 
 	}
 
@@ -163,7 +161,6 @@ public class StockAccount {
 				transaction.setDate(date);
 				transaction.setTransactionStatus("sold");
 				customer.setTransaction(transaction);
-				listOfCustomer.add(customer);
 				return customer;
 				// sc.setNoOfShares(num);
 
@@ -174,6 +171,7 @@ public class StockAccount {
 
 	public static void save() {
 		System.out.println("Saving " + stocks_acc + " address book");
+		File[] arrayOfFiles = new File(System.getProperty("user.dir")).listFiles();
 		for (File file : arrayOfFiles) {
 			String filename = file.getName();
 			if (stocks_acc.equals(filename)) {
@@ -214,7 +212,7 @@ public class StockAccount {
 	public static void addreport() throws IOException {
 		String string = OopsUtility.readJsonFile(path + stocks_acc);
 		try {
-			listOfCustomer = OopsUtility.userReadValue(string, Stock.class);
+			listOfCustomer = OopsUtility.userReadValue(string, StockCustomer.class);
 			for (StockCustomer customer : listOfCustomer) {
 				list.add(customer.getStockname());
 				queue.insert(customer.getTransaction().getDate());
@@ -230,17 +228,18 @@ public class StockAccount {
 		System.out.println("----------Stock details---------");
 		System.out.println("Stock name: ");
 		list.getLinkedList();
-		System.out.println("Date ");
+		System.out.println();
+		System.out.print("Date ");
 		for (int i = 0; i < queue.getSize(); i++) {
-			System.out.println(queue.remove() + "\t");
+			System.out.print(queue.remove() + "\t");
 		}
 		System.out.println();
 		while (!slist.isEmpty()) {
 			templist.push(slist.pop());
 		}
-		System.out.println("Status  ");
-		while (!slist.isEmpty()) {
-			System.out.println(templist.pop() + "\t\t\t");
+		System.out.print("Status  ");
+		while (!templist.isEmpty()) {
+			System.out.print(templist.pop() + "\t\t\t");
 		}
 	}
 
